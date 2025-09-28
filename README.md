@@ -1,6 +1,6 @@
 # Inglés A2-1
 
-Curso estructurado en 8 temas. En cada tema encontrarás **Teoría**, **Ejercicios**, **Mis soluciones** y **Examen**.
+Curso estructurado en 8 temas. En cada tema encontrarás **Teoría**, **Ejercicios**, y **Examenes**.
 
 ## Navegación rápida
 - [Tema 1](./temas/tema01/README.md)
