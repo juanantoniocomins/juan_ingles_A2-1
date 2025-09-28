@@ -9,7 +9,7 @@ Curso estructurado en 8 temas. En cada tema encontrarás **Teoría**, **Ejercici
 - [Tema 4](./temas/tema04/README.md)
 - [Tema 5](./temas/tema05/README.md)
 - [Tema 6](./temas/tema06/README.md)
-- [Tema 7](./temas/tema07/README.md)- 
+- [Tema 7](./temas/tema07/README.md)
 - [Tema 8](./temas/tema08/README.md)
 
 ## Recursos adicionales
