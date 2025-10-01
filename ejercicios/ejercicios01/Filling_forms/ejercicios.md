@@ -9,7 +9,7 @@
 ---
 
 ### 🔹 **Instrucciones**
-Completa la tabla con el término correcto en inglés, seleccionándolo de la lista de palabras.  
+Completa la tabla escribiendo el término correcto en inglés (de la lista).  
 
 **Word List:**  
 `Date of Birth` · `Surname` · `Nationality` · `Gender` · `Postcode` · `Address` · `Signature` · `Marital Status` · `First Name` · `City`  
@@ -17,18 +17,18 @@ Completa la tabla con el término correcto en inglés, seleccionándolo de la li
 <table>
 <tr>
 <th style="background:#e6f7ff;">🇪🇸 Campo en Español</th>
-<th style="background:#fff0e6;">🇬🇧 English Term</th>
+<th style="background:#fff0e6;">✍️ Tu Respuesta</th>
 </tr>
-<tr><td>Apellido</td><td></td></tr>
-<tr><td>Nombre</td><td></td></tr>
-<tr><td>Fecha de Nacimiento</td><td></td></tr>
-<tr><td>Género / Sexo</td><td></td></tr>
-<tr><td>Estado Civil</td><td></td></tr>
-<tr><td>Nacionalidad</td><td></td></tr>
-<tr><td>Dirección (Completa)</td><td></td></tr>
-<tr><td>Ciudad</td><td></td></tr>
-<tr><td>Código Postal</td><td></td></tr>
-<tr><td>Firma</td><td></td></tr>
+<tr><td>Apellido</td><td><input type="text" placeholder="Type here"></td></tr>
+<tr><td>Nombre</td><td><input type="text" placeholder="Type here"></td></tr>
+<tr><td>Fecha de Nacimiento</td><td><input type="text" placeholder="Type here"></td></tr>
+<tr><td>Género / Sexo</td><td><input type="text" placeholder="Type here"></td></tr>
+<tr><td>Estado Civil</td><td><input type="text" placeholder="Type here"></td></tr>
+<tr><td>Nacionalidad</td><td><input type="text" placeholder="Type here"></td></tr>
+<tr><td>Dirección (Completa)</td><td><input type="text" placeholder="Type here"></td></tr>
+<tr><td>Ciudad</td><td><input type="text" placeholder="Type here"></td></tr>
+<tr><td>Código Postal</td><td><input type="text" placeholder="Type here"></td></tr>
+<tr><td>Firma</td><td><input type="text" placeholder="Type here"></td></tr>
 </table>
 
 ## ✅ Answer Key  
@@ -37,10 +37,7 @@ Completa la tabla con el término correcto en inglés, seleccionándolo de la li
 <summary>📖 Mostrar Soluciones</summary>
 
 <table>
-<tr>
-<th style="background:#e6f7ff;">🇪🇸 Campo en Español</th>
-<th style="background:#fff0e6;">🇬🇧 English Term</th>
-</tr>
+<tr><th>🇪🇸 Campo en Español</th><th>🇬🇧 English Term</th></tr>
 <tr><td>Apellido</td><td><b>Surname</b> / <b>Last Name</b></td></tr>
 <tr><td>Nombre</td><td><b>First Name</b></td></tr>
 <tr><td>Fecha de Nacimiento</td><td><b>Date of Birth</b></td></tr>
@@ -52,7 +49,6 @@ Completa la tabla con el término correcto en inglés, seleccionándolo de la li
 <tr><td>Código Postal</td><td><b>Postcode</b> / <b>Zip Code</b></td></tr>
 <tr><td>Firma</td><td><b>Signature</b></td></tr>
 </table>
-
 </details>
 
 ---
@@ -62,29 +58,26 @@ Completa la tabla con el término correcto en inglés, seleccionándolo de la li
 ---
 
 ### 🔹 **Instrucciones**
-Usa la siguiente lista de **datos reales simulados** para completar el formulario en inglés.  
+Usa la siguiente lista de **datos simulados** para completar el formulario en inglés.  
 
 **Word List:**  
 `15th August 2001` · `Johnson` · `Spanish` · `Male` · `28013` · `221B Baker Street` · `John Johnson` · `Married` · `John` · `Madrid` · `23` · `+34 612 345 678` · `Software Developer`  
 
 <table>
-<tr>
-<th style="background:#e6f7ff;">🇪🇸 Campo en Español</th>
-<th style="background:#fff0e6;">🇬🇧 English Term</th>
-</tr>
-<tr><td>Apellido</td><td></td></tr>
-<tr><td>Nombre</td><td></td></tr>
-<tr><td>Fecha de Nacimiento</td><td></td></tr>
-<tr><td>Edad</td><td></td></tr>
-<tr><td>Género / Sexo</td><td></td></tr>
-<tr><td>Estado Civil</td><td></td></tr>
-<tr><td>Nacionalidad</td><td></td></tr>
-<tr><td>Ocupación</td><td></td></tr>
-<tr><td>Dirección (Completa)</td><td></td></tr>
-<tr><td>Ciudad</td><td></td></tr>
-<tr><td>Código Postal</td><td></td></tr>
-<tr><td>Teléfono</td><td></td></tr>
-<tr><td>Firma</td><td></td></tr>
+<tr><th>🇪🇸 Campo en Español</th><th>✍️ Tu Respuesta</th></tr>
+<tr><td>Apellido</td><td><input type="text"></td></tr>
+<tr><td>Nombre</td><td><input type="text"></td></tr>
+<tr><td>Fecha de Nacimiento</td><td><input type="text"></td></tr>
+<tr><td>Edad</td><td><input type="text"></td></tr>
+<tr><td>Género / Sexo</td><td><input type="text"></td></tr>
+<tr><td>Estado Civil</td><td><input type="text"></td></tr>
+<tr><td>Nacionalidad</td><td><input type="text"></td></tr>
+<tr><td>Ocupación</td><td><input type="text"></td></tr>
+<tr><td>Dirección (Completa)</td><td><input type="text"></td></tr>
+<tr><td>Ciudad</td><td><input type="text"></td></tr>
+<tr><td>Código Postal</td><td><input type="text"></td></tr>
+<tr><td>Teléfono</td><td><input type="text"></td></tr>
+<tr><td>Firma</td><td><input type="text"></td></tr>
 </table>
 
 ## ✅ Answer Key  
@@ -93,10 +86,7 @@ Usa la siguiente lista de **datos reales simulados** para completar el formulari
 <summary>📖 Mostrar Soluciones</summary>
 
 <table>
-<tr>
-<th style="background:#e6f7ff;">🇪🇸 Campo en Español</th>
-<th style="background:#fff0e6;">🇬🇧 English Term</th>
-</tr>
+<tr><th>🇪🇸 Campo en Español</th><th>🇬🇧 English Term</th></tr>
 <tr><td>Apellido</td><td><b>Johnson</b></td></tr>
 <tr><td>Nombre</td><td><b>John</b></td></tr>
 <tr><td>Fecha de Nacimiento</td><td><b>15th August 2001</b></td></tr>
@@ -111,7 +101,6 @@ Usa la siguiente lista de **datos reales simulados** para completar el formulari
 <tr><td>Teléfono</td><td><b>+34 612 345 678</b></td></tr>
 <tr><td>Firma</td><td><b>John Johnson</b></td></tr>
 </table>
-
 </details>
 
 ---
@@ -121,29 +110,26 @@ Usa la siguiente lista de **datos reales simulados** para completar el formulari
 ---
 
 ### 🔹 **Instrucciones**
-Usa la siguiente lista de **datos reales simulados** para completar el formulario en inglés.  
+Usa la siguiente lista de **datos simulados** para completar el formulario en inglés.  
 
 **Word List:**  
 `8th November 1998` · `Smith` · `British` · `Female` · `SW1A 1AA` · `10 Downing Street` · `Anna Smith` · `Single` · `Anna` · `London` · `26` · `+44 7700 900123` · `Graphic Designer`  
 
 <table>
-<tr>
-<th style="background:#e6f7ff;">🇪🇸 Campo en Español</th>
-<th style="background:#fff0e6;">🇬🇧 English Term</th>
-</tr>
-<tr><td>Apellido</td><td></td></tr>
-<tr><td>Nombre</td><td></td></tr>
-<tr><td>Fecha de Nacimiento</td><td></td></tr>
-<tr><td>Edad</td><td></td></tr>
-<tr><td>Género / Sexo</td><td></td></tr>
-<tr><td>Estado Civil</td><td></td></tr>
-<tr><td>Nacionalidad</td><td></td></tr>
-<tr><td>Ocupación</td><td></td></tr>
-<tr><td>Dirección (Completa)</td><td></td></tr>
-<tr><td>Ciudad</td><td></td></tr>
-<tr><td>Código Postal</td><td></td></tr>
-<tr><td>Teléfono</td><td></td></tr>
-<tr><td>Firma</td><td></td></tr>
+<tr><th>🇪🇸 Campo en Español</th><th>✍️ Tu Respuesta</th></tr>
+<tr><td>Apellido</td><td><input type="text"></td></tr>
+<tr><td>Nombre</td><td><input type="text"></td></tr>
+<tr><td>Fecha de Nacimiento</td><td><input type="text"></td></tr>
+<tr><td>Edad</td><td><input type="text"></td></tr>
+<tr><td>Género / Sexo</td><td><input type="text"></td></tr>
+<tr><td>Estado Civil</td><td><input type="text"></td></tr>
+<tr><td>Nacionalidad</td><td><input type="text"></td></tr>
+<tr><td>Ocupación</td><td><input type="text"></td></tr>
+<tr><td>Dirección (Completa)</td><td><input type="text"></td></tr>
+<tr><td>Ciudad</td><td><input type="text"></td></tr>
+<tr><td>Código Postal</td><td><input type="text"></td></tr>
+<tr><td>Teléfono</td><td><input type="text"></td></tr>
+<tr><td>Firma</td><td><input type="text"></td></tr>
 </table>
 
 ## ✅ Answer Key  
@@ -152,10 +138,7 @@ Usa la siguiente lista de **datos reales simulados** para completar el formulari
 <summary>📖 Mostrar Soluciones</summary>
 
 <table>
-<tr>
-<th style="background:#e6f7ff;">🇪🇸 Campo en Español</th>
-<th style="background:#fff0e6;">🇬🇧 English Term</th>
-</tr>
+<tr><th>🇪🇸 Campo en Español</th><th>🇬🇧 English Term</th></tr>
 <tr><td>Apellido</td><td><b>Smith</b></td></tr>
 <tr><td>Nombre</td><td><b>Anna</b></td></tr>
 <tr><td>Fecha de Nacimiento</td><td><b>8th November 1998</b></td></tr>
@@ -170,7 +153,7 @@ Usa la siguiente lista de **datos reales simulados** para completar el formulari
 <tr><td>Teléfono</td><td><b>+44 7700 900123</b></td></tr>
 <tr><td>Firma</td><td><b>Anna Smith</b></td></tr>
 </table>
-
 </details>
+
 
 
