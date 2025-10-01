@@ -19,3 +19,17 @@ Dirección (Completa)
 Ciudad	
 Código Postal	
 Firma
+
+Answer Key (Hide this section on GitHub, or use a foldable element if possible)
+
+Spanish Field	English Term
+Apellido	Surname / Last Name
+Nombre	First Name
+Fecha de Nacimiento	Date of Birth
+Género / Sexo	Gender
+Estado Civil	Marital Status
+Nacionalidad	Nationality
+Dirección (Completa)	Address
+Ciudad	City
+Código Postal	Postcode / Zip Code
+Firma	Signature
