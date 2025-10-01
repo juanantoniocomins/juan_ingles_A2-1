@@ -87,7 +87,6 @@ Usa la siguiente lista de **datos reales simulados** para completar el formulari
 <tr><td>Firma</td><td></td></tr>
 </table>
 
-
 ## ✅ Answer Key  
 
 <details>
@@ -146,8 +145,6 @@ Usa la siguiente lista de **datos reales simulados** para completar el formulari
 <tr><td>Teléfono</td><td></td></tr>
 <tr><td>Firma</td><td></td></tr>
 </table>
-
----
 
 ## ✅ Answer Key  
 
