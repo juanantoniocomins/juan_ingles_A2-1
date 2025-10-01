@@ -31,8 +31,6 @@ Completa la tabla con el término correcto en inglés, seleccionándolo de la li
 <tr><td>Firma</td><td></td></tr>
 </table>
 
----
-
 ## ✅ Answer Key  
 
 <details>
@@ -57,7 +55,11 @@ Completa la tabla con el término correcto en inglés, seleccionándolo de la li
 
 </details>
 
+---
+
 ## 📌 Ejercicio 2 — Completar con Datos Reales  
+
+---
 
 ### 🔹 **Instrucciones**
 Usa la siguiente lista de **datos reales simulados** para completar el formulario en inglés.  
@@ -85,7 +87,6 @@ Usa la siguiente lista de **datos reales simulados** para completar el formulari
 <tr><td>Firma</td><td></td></tr>
 </table>
 
----
 
 ## ✅ Answer Key  
 
@@ -117,6 +118,8 @@ Usa la siguiente lista de **datos reales simulados** para completar el formulari
 ---
 
 ## 📌 Ejercicio 3 — Completar con Datos Reales  
+
+---
 
 ### 🔹 **Instrucciones**
 Usa la siguiente lista de **datos reales simulados** para completar el formulario en inglés.  
