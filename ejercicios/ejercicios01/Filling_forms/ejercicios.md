@@ -6,6 +6,8 @@
 
 ## 📌 Ejercicio 1 — Vocabulario en Formularios  
 
+---
+
 ### 🔹 **Instrucciones**
 Completa la tabla con el término correcto en inglés, seleccionándolo de la lista de palabras.  
 
