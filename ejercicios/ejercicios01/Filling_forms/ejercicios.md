@@ -55,14 +55,6 @@ Completa la tabla con el término correcto en inglés, seleccionándolo de la li
 
 </details>
 
----
-
-## 🚀 Next Steps — Task Suggestion  
-
-👉 Como práctica adicional, busca un **formulario real en Internet** (por ejemplo, para registrarte en una biblioteca, newsletter o evento) y **rellénalo identificando las palabras aprendidas**.  
-
----
-
 ## 📌 Ejercicio 2 — Completar con Datos Reales  
 
 ### 🔹 **Instrucciones**
@@ -119,4 +111,64 @@ Usa la siguiente lista de **datos reales simulados** para completar el formulari
 </table>
 
 </details>
+
+---
+
+## 📌 Ejercicio 3 — Completar con Datos Reales  
+
+### 🔹 **Instrucciones**
+Usa la siguiente lista de **datos reales simulados** para completar el formulario en inglés.  
+
+**Word List:**  
+`8th November 1998` · `Smith` · `British` · `Female` · `SW1A 1AA` · `10 Downing Street` · `Anna Smith` · `Single` · `Anna` · `London` · `26` · `+44 7700 900123` · `Graphic Designer`  
+
+<table>
+<tr>
+<th style="background:#e6f7ff;">🇪🇸 Campo en Español</th>
+<th style="background:#fff0e6;">🇬🇧 English Term</th>
+</tr>
+<tr><td>Apellido</td><td></td></tr>
+<tr><td>Nombre</td><td></td></tr>
+<tr><td>Fecha de Nacimiento</td><td></td></tr>
+<tr><td>Edad</td><td></td></tr>
+<tr><td>Género / Sexo</td><td></td></tr>
+<tr><td>Estado Civil</td><td></td></tr>
+<tr><td>Nacionalidad</td><td></td></tr>
+<tr><td>Ocupación</td><td></td></tr>
+<tr><td>Dirección (Completa)</td><td></td></tr>
+<tr><td>Ciudad</td><td></td></tr>
+<tr><td>Código Postal</td><td></td></tr>
+<tr><td>Teléfono</td><td></td></tr>
+<tr><td>Firma</td><td></td></tr>
+</table>
+
+---
+
+## ✅ Answer Key  
+
+<details>
+<summary>📖 Mostrar Soluciones</summary>
+
+<table>
+<tr>
+<th style="background:#e6f7ff;">🇪🇸 Campo en Español</th>
+<th style="background:#fff0e6;">🇬🇧 English Term</th>
+</tr>
+<tr><td>Apellido</td><td><b>Smith</b></td></tr>
+<tr><td>Nombre</td><td><b>Anna</b></td></tr>
+<tr><td>Fecha de Nacimiento</td><td><b>8th November 1998</b></td></tr>
+<tr><td>Edad</td><td><b>26</b></td></tr>
+<tr><td>Género / Sexo</td><td><b>Female</b></td></tr>
+<tr><td>Estado Civil</td><td><b>Single</b></td></tr>
+<tr><td>Nacionalidad</td><td><b>British</b></td></tr>
+<tr><td>Ocupación</td><td><b>Graphic Designer</b></td></tr>
+<tr><td>Dirección (Completa)</td><td><b>10 Downing Street</b></td></tr>
+<tr><td>Ciudad</td><td><b>London</b></td></tr>
+<tr><td>Código Postal</td><td><b>SW1A 1AA</b></td></tr>
+<tr><td>Teléfono</td><td><b>+44 7700 900123</b></td></tr>
+<tr><td>Firma</td><td><b>Anna Smith</b></td></tr>
+</table>
+
+</details>
+
 
