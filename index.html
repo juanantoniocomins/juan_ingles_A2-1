@@ -1,40 +1,398 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Curso Inglés A2-1</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; background: #fdfdfd; color: #333; }
-    h1 { text-align: center; color: #0d6efd; }
-    p { text-align: center; }
-    table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
-    th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
-    th { background: #0d6efd; color: white; }
-    tr:nth-child(even) { background: #f9f9f9; }
-    a { text-decoration: none; color: #0d6efd; font-weight: bold; }
-    a:hover { text-decoration: underline; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Inglés A2-1</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-  <h1>🌟 Curso Inglés A2-1</h1>
-  <p>Cada tema incluye 3 semanas con teoría y ejercicios.</p>
-  
-  <table>
-    <tr>
-      <th>Tema</th>
-      <th>Week 1</th>
-      <th>Week 2</th>
-      <th>Week 3</th>
-    </tr>
-    <!-- 8 TEMAS -->
-    <tr><td>Tema 1</td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td></tr>
-    <tr><td>Tema 2</td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td></tr>
-    <tr><td>Tema 3</td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td></tr>
-    <tr><td>Tema 4</td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td></tr>
-    <tr><td>Tema 5</td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td></tr>
-    <tr><td>Tema 6</td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td></tr>
-    <tr><td>Tema 7</td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td></tr>
-    <tr><td>Tema 8</td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td><td><a href="#">Teoría</a> | <a href="#">Ejercicios</a></td></tr>
-  </table>
+    <div class="container">
+        <div class="header">
+            <div class="flag-container">
+                <div class="union-jack"></div>
+                <h1>Curso Inglés A2-1</h1>
+                <div class="union-jack"></div>
+            </div>
+            <p class="subtitle">Programa estructurado de aprendizaje progresivo</p>
+        </div>
+        
+        <div class="course-info">
+            <p class="info-text">📚 8 Temas | 3 Semanas por tema | Material completo: Teoría, Ejercicios, Exámenes y Extras</p>
+        </div>
+        
+        <div class="themes-accordion">
+            <!-- ====================== -->
+            <!-- TEMA 1 - Greetings & Introductions -->
+            <!-- ====================== -->
+            <div class="theme-section">
+                <button class="theme-toggle" onclick="toggleTheme(this)">
+                    <div class="theme-label">
+                        <span class="theme-number">1</span>
+                        <span class="theme-name">Greetings & Introductions</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="weeks-content">
+                    <div class="weeks-table-wrapper">
+                        <table class="weeks-table">
+                            <thead>
+                                <tr>
+                                    <th>Semana</th><th>Teoría</th><th>Ejercicios</th><th>Exámenes</th><th>Extras</th><th>Contenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="week-name">📅 Week 1</td>
+                                    <td><a href="tema1/week1/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema1/week1/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema1/week1/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema1/week1/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema1/week1/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 2</td>
+                                    <td><a href="tema1/week2/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema1/week2/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema1/week2/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema1/week2/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema1/week2/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 3</td>
+                                    <td><a href="tema1/week3/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema1/week3/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema1/week3/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema1/week3/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema1/week3/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- ====================== -->
+            <!-- TEMA 2 - Daily Routines -->
+            <!-- ====================== -->
+            <div class="theme-section">
+                <button class="theme-toggle" onclick="toggleTheme(this)">
+                    <div class="theme-label">
+                        <span class="theme-number">2</span>
+                        <span class="theme-name">Daily Routines</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="weeks-content">
+                    <div class="weeks-table-wrapper">
+                        <table class="weeks-table">
+                            <thead>
+                                <tr>
+                                    <th>Semana</th><th>Teoría</th><th>Ejercicios</th><th>Exámenes</th><th>Extras</th><th>Contenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="week-name">📅 Week 1</td>
+                                    <td><a href="tema2/week1/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema2/week1/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema2/week1/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema2/week1/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema2/week1/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 2</td>
+                                    <td><a href="tema2/week2/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema2/week2/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema2/week2/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema2/week2/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema2/week2/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 3</td>
+                                    <td><a href="tema2/week3/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema2/week3/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema2/week3/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema2/week3/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema2/week3/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- ====================== -->
+            <!-- TEMA 3 - Food & Drinks -->
+            <!-- ====================== -->
+            <div class="theme-section">
+                <button class="theme-toggle" onclick="toggleTheme(this)">
+                    <div class="theme-label">
+                        <span class="theme-number">3</span>
+                        <span class="theme-name">Food & Drinks</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="weeks-content">
+                    <div class="weeks-table-wrapper">
+                        <table class="weeks-table">
+                            <thead>
+                                <tr>
+                                    <th>Semana</th><th>Teoría</th><th>Ejercicios</th><th>Exámenes</th><th>Extras</th><th>Contenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="week-name">📅 Week 1</td>
+                                    <td><a href="tema3/week1/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema3/week1/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema3/week1/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema3/week1/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema3/week1/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 2</td>
+                                    <td><a href="tema3/week2/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema3/week2/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema3/week2/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema3/week2/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema3/week2/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 3</td>
+                                    <td><a href="tema3/week3/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema3/week3/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema3/week3/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema3/week3/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema3/week3/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- ====================== -->
+            <!-- TEMA 4 - Family & Friends -->
+            <!-- ====================== -->
+            <div class="theme-section">
+                <button class="theme-toggle" onclick="toggleTheme(this)">
+                    <div class="theme-label">
+                        <span class="theme-number">4</span>
+                        <span class="theme-name">Family & Friends</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="weeks-content">
+                    <div class="weeks-table-wrapper">
+                        <table class="weeks-table">
+                            <thead>
+                                <tr>
+                                    <th>Semana</th><th>Teoría</th><th>Ejercicios</th><th>Exámenes</th><th>Extras</th><th>Contenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="week-name">📅 Week 1</td>
+                                    <td><a href="tema4/week1/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema4/week1/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema4/week1/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema4/week1/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema4/week1/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 2</td>
+                                    <td><a href="tema4/week2/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema4/week2/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema4/week2/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema4/week2/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema4/week2/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 3</td>
+                                    <td><a href="tema4/week3/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema4/week3/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema4/week3/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema4/week3/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema4/week3/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- ====================== -->
+            <!-- TEMA 5 - Hobbies & Free Time -->
+            <!-- ====================== -->
+            <div class="theme-section">
+                <button class="theme-toggle" onclick="toggleTheme(this)">
+                    <div class="theme-label">
+                        <span class="theme-number">5</span>
+                        <span class="theme-name">Hobbies & Free Time</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="weeks-content">
+                    <div class="weeks-table-wrapper">
+                        <table class="weeks-table">
+                            <thead>
+                                <tr>
+                                    <th>Semana</th><th>Teoría</th><th>Ejercicios</th><th>Exámenes</th><th>Extras</th><th>Contenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="week-name">📅 Week 1</td>
+                                    <td><a href="tema5/week1/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema5/week1/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema5/week1/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema5/week1/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema5/week1/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 2</td>
+                                    <td><a href="tema5/week2/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema5/week2/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema5/week2/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema5/week2/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema5/week2/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 3</td>
+                                    <td><a href="tema5/week3/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema5/week3/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema5/week3/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema5/week3/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema5/week3/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- ====================== -->
+            <!-- TEMA 6 - Shopping & Money -->
+            <!-- ====================== -->
+            <div class="theme-section">
+                <button class="theme-toggle" onclick="toggleTheme(this)">
+                    <div class="theme-label">
+                        <span class="theme-number">6</span>
+                        <span class="theme-name">Shopping & Money</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="weeks-content">
+                    <div class="weeks-table-wrapper">
+                        <table class="weeks-table">
+                            <thead>
+                                <tr>
+                                    <th>Semana</th><th>Teoría</th><th>Ejercicios</th><th>Exámenes</th><th>Extras</th><th>Contenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="week-name">📅 Week 1</td>
+                                    <td><a href="tema6/week1/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema6/week1/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema6/week1/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema6/week1/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema6/week1/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 2</td>
+                                    <td><a href="tema6/week2/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema6/week2/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema6/week2/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema6/week2/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema6/week2/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 3</td>
+                                    <td><a href="tema6/week3/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema6/week3/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema6/week3/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema6/week3/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema6/week3/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- ====================== -->
+            <!-- TEMA 7 - Travel & Transport -->
+            <!-- ====================== -->
+            <div class="theme-section">
+                <button class="theme-toggle" onclick="toggleTheme(this)">
+                    <div class="theme-label">
+                        <span class="theme-number">7</span>
+                        <span class="theme-name">Travel & Transport</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="weeks-content">
+                    <div class="weeks-table-wrapper">
+                        <table class="weeks-table">
+                            <thead>
+                                <tr>
+                                    <th>Semana</th><th>Teoría</th><th>Ejercicios</th><th>Exámenes</th><th>Extras</th><th>Contenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="week-name">📅 Week 1</td>
+                                    <td><a href="tema7/week1/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema7/week1/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema7/week1/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema7/week1/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema7/week1/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 2</td>
+                                    <td><a href="tema7/week2/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema7/week2/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema7/week2/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema7/week2/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema7/week2/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 3</td>
+                                    <td><a href="tema7/week3/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema7/week3/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema7/week3/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema7/week3/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema7/week3/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- ====================== -->
+            <!-- TEMA 8 - Health & Body -->
+            <!-- ====================== -->
+            <div class="theme-section">
+                <button class="theme-toggle" onclick="toggleTheme(this)">
+                    <div class="theme-label">
+                        <span class="theme-number">8</span>
+                        <span class="theme-name">Health & Body</span>
+                    </div>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="weeks-content">
+                    <div class="weeks-table-wrapper">
+                        <table class="weeks-table">
+                            <thead>
+                                <tr>
+                                    <th>Semana</th><th>Teoría</th><th>Ejercicios</th><th>Exámenes</th><th>Extras</th><th>Contenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="week-name">📅 Week 1</td>
+                                    <td><a href="tema8/week1/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema8/week1/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema8/week1/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema8/week1/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema8/week1/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 2</td>
+                                    <td><a href="tema8/week2/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema8/week2/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema8/week2/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema8/week2/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema8/week2/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                                <tr><td class="week-name">📅 Week 3</td>
+                                    <td><a href="tema8/week3/teoria.html" class="table-link teoria-btn">📖 Ver</a></td>
+                                    <td><a href="tema8/week3/ejercicios.html" class="table-link ejercicios-btn">✏️ Ver</a></td>
+                                    <td><a href="tema8/week3/examenes.html" class="table-link examenes-btn">📝 Ver</a></td>
+                                    <td><a href="tema8/week3/extras.html" class="table-link extras-btn">⭐ Ver</a></td>
+                                    <td><a href="tema8/week3/contenido.html" class="table-link contenido-btn">📦 Ver</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
 </body>
 </html>
+
