@@ -1,0 +1,260 @@
+/* Emojis para usar en contenidos y alertas:
+   📚  Libro/apuntes (por ejemplo para indicar "Temas" en índice)
+   📅  Calendario (ej: indicar "Semana")
+   📖  Libro abierto (para enlazar a teoría)
+   ✏️  Lápiz (para ejercicios)
+   📝  Cuaderno (para exámenes)
+   ⭐  Estrella (para extras)
+   📦  Caja (para contenido/recursos)
+   💡  Bombilla (para consejos o tips)
+   ⚠️  Precaución (para advertencias)
+   📌  Chincheta (para recordatorios)
+   ℹ️  Información (para notas informativas)
+*/
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Verdana, sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+  font-size: 1rem;
+  padding: 1.5rem;
+}
+
+/* Contenedor principal */
+.teoria-container {
+  max-width: 950px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Encabezado */
+.teoria-header {
+  background: linear-gradient(135deg, #012169, #1a3a8a);
+  color: #fff;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.teoria-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.teoria-header .subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Contenido */
+.teoria-content {
+  padding: 2rem;
+}
+
+.teoria-content h2 {
+  font-size: 1.4rem;
+  color: #012169;
+  border-bottom: 2px solid #e8ecf1;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.teoria-content p {
+  margin-bottom: 1rem;
+}
+
+.teoria-content b {
+  color: #012169;
+}
+
+.teoria-content u {
+  text-decoration: underline;
+}
+
+/* Ejemplos destacados */
+.example {
+  background: #e8f0ff;
+  padding: 0.6rem 0.8rem;
+  border-left: 4px solid #012169;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+/* Listas */
+ul {
+  margin: 0 0 1.5rem 1.2rem;
+  list-style: disc;
+}
+
+/* Tablas */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+thead {
+  background: #f0f4ff;
+}
+
+th, td {
+  border: 1px solid #e0e6ef;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+th {
+  font-weight: bold;
+  color: #012169;
+}
+
+tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* Notas */
+.note {
+  background: #fff0e6;
+  border-left: 5px solid #f57c00;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.note h3 {
+  margin-bottom: 0.6rem;
+  color: #c45a06;
+}
+
+
+.container.content-page {
+  max-width: 800px; /* ancho máximo más estrecho para facilitar la lectura */
+}
+
+.container.content-page {
+  max-width: 800px; /* ancho máximo más estrecho para facilitar la lectura */
+}
+
+a { color: #012169; text-decoration: underline; }
+a:hover { color: #c8102e; }
+
+.topic-title {
+  color: #012169;               /* azul corporativo del sitio */
+  text-align: center;
+  font-size: 1.8rem;            /* tamaño de fuente destacado */
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #cfe0ff;  /* línea inferior azul clara (efecto sutil) :contentReference[oaicite:16]{index=16} */
+  margin: 1rem 0 1.5rem 0;      /* separación vertical alrededor del título */
+  /* text-shadow: 0 1px 2px rgba(0,0,0,0.1); opcional, para ligero relieve */
+}
+
+.week-summary {
+  background: #f0f6ff;           /* fondo azul claro contrastante :contentReference[oaicite:22]{index=22} */
+  border: 1px solid #d7e6ff;     /* borde suave en azul claro :contentReference[oaicite:23]{index=23} */
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;           /* separación debajo de la caja */
+}
+.week-summary .summary-text {
+  /* Podríamos destacar el texto de resumen en sí */
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.week-summary .other-weeks {
+  font-size: 0.95rem;
+}
+.week-summary a {
+  color: #012169;               /* enlaces en azul oscuro para visibilidad */
+  font-weight: 500;
+  text-decoration: none;
+}
+.week-summary a:hover {
+  text-decoration: underline;
+}
+
+ul, ol {
+  margin: 1rem 0;
+  padding-left: 2rem; /* sangría para las viñetas/números */
+}
+li {
+  margin-bottom: 0.5rem;
+}
+
+th {
+  background: #f8f9fa;
+  color: #012169;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid #e8ecf1; /* línea inferior más gruesa para separar encabezado :contentReference[oaicite:29]{index=29} */
+  white-space: nowrap;             /* evitar quiebres si son palabras cortas */
+}
+
+td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #f0f0f0; /* línea divisoria tenue entre filas :contentReference[oaicite:30]{index=30} */
+}
+
+/* Estilo genérico para alertas/notas */
+.alert {
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+}
+/* Consejo: fondo amarillo claro, borde amarillo */
+.consejo { 
+  background: #fff3cd;  /* amarillo suave de fondo */
+  border-left: 4px solid #ffeeba;
+}
+.consejo::before {
+  content: "💡 ";
+}
+
+/* Advertencia: fondo rojo claro, borde rojo */
+.advertencia {
+  background: #f8d7da;
+  border-left: 4px solid #f5c6cb;
+}
+.advertencia::before {
+  content: "⚠️ ";
+}
+
+/* Recordatorio: fondo verde claro, borde verde */
+.recordatorio {
+  background: #d4edda;
+  border-left: 4px solid #c3e6cb;
+}
+.recordatorio::before {
+  content: "📌 ";
+}
+
+/* Info: fondo azul claro, borde azul */
+.info {
+  background: #d1ecf1;
+  border-left: 4px solid #bee5eb;
+}
+.info::before {
+  content: "ℹ️ ";
+}
+
+@media (max-width: 480px) {
+  .topic-title { font-size: 1.5rem; }
+  .week-summary { padding: 0.75rem; }
+}

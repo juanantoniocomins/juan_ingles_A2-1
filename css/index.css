@@ -1,0 +1,162 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fafbfc; color: #333; padding: 1rem;
+}
+.container {
+    max-width: 1400px; margin: 0 auto; background: white;
+    border-radius: 12px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); overflow: hidden;
+}
+.header {
+    background: linear-gradient(135deg, #012169 0%, #1a3a8a 50%, #c8102e 100%);
+    color: white; padding: 2rem 1rem; text-align: center; position: relative;
+}
+.flag-container {
+    display: flex; justify-content: center; align-items: center;
+    gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap;
+}
+.union-jack {
+    width: 70px; height: 48px; background: white; position: relative;
+    border-radius: 4px; box-shadow: 0 3px 10px rgba(0,0,0,0.3); flex-shrink: 0;
+}
+.union-jack::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+        linear-gradient(to right, transparent 45%, #c8102e 45%, #c8102e 55%, transparent 55%),
+        linear-gradient(to bottom, transparent 40%, #c8102e 40%, #c8102e 60%, transparent 60%),
+        linear-gradient(35deg, transparent 48%, #c8102e 48%, #c8102e 52%, transparent 52%),
+        linear-gradient(-35deg, transparent 48%, #c8102e 48%, #c8102e 52%, transparent 52%),
+        linear-gradient(35deg, #012169 0%, #012169 30%, transparent 30%),
+        linear-gradient(-35deg, #012169 0%, #012169 30%, transparent 30%),
+        linear-gradient(35deg, transparent 70%, #012169 70%, #012169 100%),
+        linear-gradient(-35deg, transparent 70%, #012169 70%, #012169 100%);
+}
+h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+.subtitle { font-size: 1rem; opacity: 0.95; }
+.course-info { padding: 1.5rem; background: #f8f9fa; border-bottom: 2px solid #e8ecf1; }
+.info-text { text-align: center; color: #666; font-size: 0.95rem; }
+.themes-accordion { padding: 1rem; }
+.theme-section {
+    margin-bottom: 1rem; border: 1px solid #e8ecf1;
+    border-radius: 8px; overflow: hidden;
+}
+.theme-toggle {
+    width: 100%; padding: 1.2rem 1rem; background: linear-gradient(to right, #f8f9fa, #ffffff);
+    border: none; cursor: pointer; display: flex; justify-content: space-between;
+    align-items: center; font-size: 1rem; font-weight: 600; color: #012169;
+    transition: all 0.2s ease;
+}
+.theme-toggle:hover { background: linear-gradient(to right, #e8f0ff, #f0f4ff); }
+.theme-toggle.active { background: #012169; color: white; }
+.theme-label { display: flex; align-items: center; gap: 0.8rem; flex: 1; }
+.theme-number {
+    background: #012169; color: white; width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; font-weight: bold; flex-shrink: 0;
+}
+.theme-toggle.active .theme-number { background: white; color: #012169; }
+.arrow { transition: transform 0.3s ease; font-size: 1.2rem; flex-shrink: 0; }
+.theme-toggle.active .arrow { transform: rotate(180deg); }
+.weeks-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: white; }
+.weeks-content.open { max-height: 800px; }
+.weeks-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.weeks-table { width: 100%; border-collapse: collapse; min-width: 700px; }
+.weeks-table thead { background: #f8f9fa; }
+.weeks-table th {
+    padding: 1rem 0.8rem; text-align: left; font-weight: 600; color: #012169;
+    border-bottom: 2px solid #e8ecf1; font-size: 0.9rem; white-space: nowrap;
+}
+.weeks-table td { padding: 1rem 0.8rem; border-bottom: 1px solid #f0f0f0; }
+.weeks-table tbody tr:hover { background: #fafbfc; }
+.week-name { font-weight: 500; color: #333; white-space: nowrap; }
+.table-link {
+    padding: 0.5rem 1rem; text-decoration: none; border-radius: 5px;
+    font-size: 0.85rem; font-weight: 500; transition: all 0.2s ease;
+    display: inline-block; white-space: nowrap;
+}
+.teoria-btn { background: #e8f0ff; color: #012169; border: 1px solid #012169; }
+.teoria-btn:hover { background: #012169; color: white; }
+.ejercicios-btn { background: #fff0f0; color: #c8102e; border: 1px solid #c8102e; }
+.ejercicios-btn:hover { background: #c8102e; color: white; }
+.examenes-btn { background: #fff8e1; color: #f57c00; border: 1px solid #f57c00; }
+.examenes-btn:hover { background: #f57c00; color: white; }
+.extras-btn { background: #f3e5f5; color: #7b1fa2; border: 1px solid #7b1fa2; }
+.extras-btn:hover { background: #7b1fa2; color: white; }
+.contenido-btn { background: #e8f5e9; color: #2e7d32; border: 1px solid #2e7d32; }
+.contenido-btn:hover { background: #2e7d32; color: white; }
+
+/* ============================= */
+/* Estilos para la Modal         */
+/* ============================= */
+
+/* ===== Modal ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: #f0f6ff; /* azul claro */
+  margin: 8% auto;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 640px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  border: 1px solid #d7e6ff; /* borde suave */
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+.modal-content h2#modal-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.4rem;
+  color: #012169;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid #cfe0ff; /* subrayado sutil */
+}
+
+/* Lista de puntos del contenido */
+#modal-body ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+#modal-body li {
+  background: #ffffff;
+  border: 1px solid #e8ecf1;
+  border-left: 4px solid #012169;
+  border-radius: 8px;
+  padding: 0.65rem 0.8rem;
+  color: #333;
+  line-height: 1.45;
+}
+
+/* Cierre */
+.close {
+  float: right;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #c8102e;
+  cursor: pointer;
+  transition: opacity .2s ease, transform .2s ease, color .2s ease;
+}
+.close:hover { color: #a50d24; transform: scale(1.05); }
+
+/* Animación */
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .modal-content { padding: 1.25rem; }
+  #modal-body li { font-size: 0.95rem; }
+}
