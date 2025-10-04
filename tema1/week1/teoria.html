@@ -2,70 +2,660 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Diseño responsive -->
-  <title>Tema 1 – Greetings & Introductions – Week 1</title> <!-- Título dinámico -->
-  <link rel="stylesheet" href="../../css/teoria.css"> <!-- Enlace a los estilos CSS de la plantilla -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tema 1 – Greetings & Introductions – Week 1</title>
+  <link rel="stylesheet" href="../../css/teoria.css">
 </head>
 <body>
 
-<div class="container content-page"><!-- Contenedor principal -->
+<div class="container content-page">
+  <a href="../../index.html" class="inicio-btn">Inicio</a>
   
-  <!-- Título de la página (dinámico según tema y semana) -->
-  <h1 class="topic-title"></h1>
+  <h1 class="topic-title">Tema 1 – Greetings & Introductions – Week 1</h1>
   
-  <!-- Caja de resumen semanal con contenido y enlaces a otras semanas -->
   <div class="week-summary">
-      <p class="summary-text">💬 <strong>Resumen:</strong> 
-          <ul id="summary-points"></ul>            
-      </p>
-      <p class="other-weeks">
-        Otras semanas de <strong>Tema 1:</strong> 
-        <a href="../week2/teoria.html">Week 2</a> | <a href="../week3/teoria.html">Week 3</a>
-      </p>
+    <p class="summary-text">💬 <strong>Resumen:</strong></p>
+      <ul id="summary-points">
+        <li>Basic greetings and introductions</li>
+        <li>Personal pronouns and the verb "to be"</li>
+        <li>Simple present tense</li>
+      </ul>            
   </div>
 
-  <!-- Contenido principal de la teoría de la semana -->
   <div class="content">
     <p>Contenido de teoría de la semana 1... (texto de ejemplo justificado).</p>
     <ul>
       <li>Elemento de lista de ejemplo.</li>
       <li>Otro elemento de lista con <a href="#">enlace</a> de ejemplo.</li>
     </ul>
+    
     <h2>Subtítulo de Ejemplo</h2>
     <p>Más contenido con formato, incluyendo <strong>negritas</strong>, <u>subrayados</u>, etc.</p>
+    
     <!-- Tabla de ejemplo -->
     <div class="table-responsive">
       <table>
         <thead>
-          <tr><th>Encabezado 1</th><th>Encabezado 2</th><th>Encabezado 3</th></tr>
+          <tr>
+            <th>Encabezado 1</th>
+            <th>Encabezado 2</th>
+            <th>Encabezado 3</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td>Dato 1</td><td>Dato 2</td><td>Dato 3</td></tr>
-          <tr><td>Dato A</td><td>Dato B</td><td>Dato C</td></tr>
+          <tr>
+            <td>Dato 1</td>
+            <td>Dato 2</td>
+            <td>Dato 3</td>
+          </tr>
+          <tr>
+            <td>Dato A</td>
+            <td>Dato B</td>
+            <td>Dato C</td>
+          </tr>
         </tbody>
       </table>
     </div>
-    <!-- Nota destacada de ejemplo -->
-    <div class="consejo">
-      <strong>Consejo:</strong>
-      <p>Practica estos saludos en voz alta para ganar fluidez.</p>
-    </div><br/>
-    <div class="advertencia">
-      <strong>Advertencia:</strong>
-      <p>Practica estos saludos en voz alta para ganar fluidez.</p>
-    </div><br/>
-    <div class="recordatorio">
-      <strong>Recordatorio:</strong>
-      <p>Practica estos saludos en voz alta para ganar fluidez.</p>
-    </div><br/>
-    <div class="info">
-      <strong>Información:</strong>
-      <p>Practica estos saludos en voz alta para ganar fluidez.</p>
-    </div><br/>            
-  </div>
 
+    <!-- Formulario básico de ejemplo -->
+    <h2>Formulario</h2>
+    <form>
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" placeholder="Escribe tu nombre">
+
+      <label for="email">Correo:</label>
+      <input type="email" id="email" name="email" placeholder="ejemplo@mail.com">
+
+      <label for="level">Selecciona tu nivel:</label>
+      <select name="level" id="level">
+        <option value="a1">A1</option>
+        <option value="a2">A2</option>
+        <option value="b1">B1</option>
+      </select>
+
+      <label>Elige la respuesta correcta:</label>
+      <div class="form-check">
+        <input type="radio" id="r1" name="answer" value="1">
+        <label for="r1">Opción 1</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" id="r2" name="answer" value="2">
+        <label for="r2">Opción 2</label>
+      </div>
+
+      <label>Marca lo que corresponda:</label>
+      <div class="form-check">
+        <input type="checkbox" id="c1" name="extras" value="audio">
+        <label for="c1">Incluir audio</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" id="c2" name="extras" value="video">
+        <label for="c2">Incluir vídeo</label>
+      </div>
+
+      <label for="comments">Comentarios:</label>
+      <textarea id="comments" name="comments" rows="4" placeholder="Escribe aquí..."></textarea>
+
+      <input type="submit" value="Enviar respuestas">
+    </form>
+
+    <!-- ============================= -->
+    <!-- SECCIÓN DE EJERCICIOS CLÁSICOS -->
+    <!-- ============================= -->
+
+    <h2>📝 Ejercicios Prácticos</h2>
+
+    <!-- Ejercicio 1: Rellenar huecos -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 1: Complete the sentences</h3>
+      <p class="instrucciones">Fill in the blanks with the correct form of the verb "to be" (am, is, are).</p>
+      
+      <form class="ejercicio-form">
+        <div class="question-group">
+          <label for="q1">1. I _______ a student.</label>
+          <input type="text" id="q1" name="q1" placeholder="Your answer" autocomplete="off">
+        </div>
+        
+        <div class="question-group">
+          <label for="q2">2. She _______ from Spain.</label>
+          <input type="text" id="q2" name="q2" placeholder="Your answer" autocomplete="off">
+        </div>
+        
+        <div class="question-group">
+          <label for="q3">3. They _______ my friends.</label>
+          <input type="text" id="q3" name="q3" placeholder="Your answer" autocomplete="off">
+        </div>
+        
+        <button type="submit" class="btn-check">Check Answers</button>
+      </form>
+    </div>
+
+    <!-- Ejercicio 2: Múltiple opción -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 2: Multiple Choice</h3>
+      <p class="instrucciones">Choose the correct answer for each question.</p>
+      
+      <form class="ejercicio-form">
+        <div class="question-group">
+          <p class="question-text">1. What _______ your name?</p>
+          <label class="radio-option">
+            <input type="radio" name="mc1" value="a">
+            <span>a) am</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="mc1" value="b">
+            <span>b) is</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="mc1" value="c">
+            <span>c) are</span>
+          </label>
+        </div>
+        
+        <div class="question-group">
+          <p class="question-text">2. Where _______ they from?</p>
+          <label class="radio-option">
+            <input type="radio" name="mc2" value="a">
+            <span>a) am</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="mc2" value="b">
+            <span>b) is</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="mc2" value="c">
+            <span>c) are</span>
+          </label>
+        </div>
+        
+        <button type="submit" class="btn-check">Check Answers</button>
+      </form>
+    </div>
+
+    <!-- Ejercicio 3: Verdadero o Falso -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 3: True or False</h3>
+      <p class="instrucciones">Read the statements and decide if they are true or false.</p>
+      
+      <form class="ejercicio-form">
+        <div class="question-group">
+          <p class="question-text">1. The capital of England is London.</p>
+          <label class="radio-option">
+            <input type="radio" name="tf1" value="true">
+            <span>✓ True</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="tf1" value="false">
+            <span>✗ False</span>
+          </label>
+        </div>
+        
+        <div class="question-group">
+          <p class="question-text">2. Shakespeare was born in France.</p>
+          <label class="radio-option">
+            <input type="radio" name="tf2" value="true">
+            <span>✓ True</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="tf2" value="false">
+            <span>✗ False</span>
+          </label>
+        </div>
+        
+        <button type="submit" class="btn-check">Check Answers</button>
+      </form>
+    </div>
+
+    <!-- Ejercicio 4: Matching (Emparejar) -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 4: Match the words</h3>
+      <p class="instrucciones">Match each English word with its Spanish translation.</p>
+      
+      <form class="ejercicio-form">
+        <div class="question-group">
+          <label for="match1">1. Hello</label>
+          <select id="match1" name="match1">
+            <option value="">-- Select --</option>
+            <option value="a">Hola</option>
+            <option value="b">Adiós</option>
+            <option value="c">Gracias</option>
+            <option value="d">Por favor</option>
+          </select>
+        </div>
+        
+        <div class="question-group">
+          <label for="match2">2. Goodbye</label>
+          <select id="match2" name="match2">
+            <option value="">-- Select --</option>
+            <option value="a">Hola</option>
+            <option value="b">Adiós</option>
+            <option value="c">Gracias</option>
+            <option value="d">Por favor</option>
+          </select>
+        </div>
+        
+        <div class="question-group">
+          <label for="match3">3. Thank you</label>
+          <select id="match3" name="match3">
+            <option value="">-- Select --</option>
+            <option value="a">Hola</option>
+            <option value="b">Adiós</option>
+            <option value="c">Gracias</option>
+            <option value="d">Por favor</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="btn-check">Check Answers</button>
+      </form>
+    </div>
+
+    <!-- Ejercicio 5: Ordenar palabras -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 5: Word Order</h3>
+      <p class="instrucciones">Arrange the words to form correct sentences.</p>
+      
+      <form class="ejercicio-form">
+        <div class="question-group">
+          <p class="question-text">1. Words: <strong>am / student / I / a</strong></p>
+          <label for="order1">Your sentence:</label>
+          <input type="text" id="order1" name="order1" placeholder="Write the correct sentence" autocomplete="off">
+        </div>
+        
+        <div class="question-group">
+          <p class="question-text">2. Words: <strong>from / is / She / London</strong></p>
+          <label for="order2">Your sentence:</label>
+          <input type="text" id="order2" name="order2" placeholder="Write the correct sentence" autocomplete="off">
+        </div>
+        
+        <button type="submit" class="btn-check">Check Answers</button>
+      </form>
+    </div>
+
+    <!-- Ejercicio 6: Comprensión de lectura -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 6: Reading Comprehension</h3>
+      <p class="instrucciones">Read the text and answer the questions.</p>
+      
+      <div class="reading-text">
+        <p><strong>My name is Sarah.</strong> I am 25 years old and I am from Manchester, England. I am a teacher at a primary school. I love my job because I enjoy working with children. In my free time, I like reading books and playing tennis.</p>
+      </div>
+      
+      <form class="ejercicio-form">
+        <div class="question-group">
+          <label for="comp1">1. What is Sarah's profession?</label>
+          <input type="text" id="comp1" name="comp1" placeholder="Your answer" autocomplete="off">
+        </div>
+        
+        <div class="question-group">
+          <label for="comp2">2. Where is she from?</label>
+          <input type="text" id="comp2" name="comp2" placeholder="Your answer" autocomplete="off">
+        </div>
+        
+        <div class="question-group">
+          <p class="question-text">3. What does Sarah like doing in her free time?</p>
+          <label class="checkbox-option">
+            <input type="checkbox" name="hobby1" value="reading">
+            <span>Reading books</span>
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox" name="hobby2" value="tennis">
+            <span>Playing tennis</span>
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox" name="hobby3" value="cooking">
+            <span>Cooking</span>
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox" name="hobby4" value="swimming">
+            <span>Swimming</span>
+          </label>
+        </div>
+        
+        <button type="submit" class="btn-check">Check Answers</button>
+      </form>
+    </div>
+
+    <!-- Ejercicio 7: Redacción corta -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 7: Short Writing</h3>
+      <p class="instrucciones">Write a short paragraph (50-80 words) introducing yourself in English.</p>
+      
+      <form class="ejercicio-form">
+        <div class="question-group">
+          <label for="essay">Your paragraph:</label>
+          <textarea id="essay" name="essay" rows="6" placeholder="Write your introduction here..."></textarea>
+          <div class="word-counter">
+            <span id="word-count">0</span> words
+          </div>
+        </div>
+        
+        <button type="submit" class="btn-submit-essay">Submit</button>
+      </form>
+    </div>
+
+    <!-- Ejercicio 8: Escucha (simulado) -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 8: Listening Practice</h3>
+      <p class="instrucciones">Listen to the audio and answer the questions below.</p>
+      
+      <div class="audio-player">
+        <audio controls>
+          <source src="../../audios/beep.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      
+      <form class="ejercicio-form">
+        <div class="question-group">
+          <p class="question-text">1. What is the speaker's name?</p>
+          <label class="radio-option">
+            <input type="radio" name="listen1" value="a">
+            <span>a) John</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="listen1" value="b">
+            <span>b) Mary</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="listen1" value="c">
+            <span>c) Peter</span>
+          </label>
+        </div>
+        
+        <button type="submit" class="btn-check">Check Answers</button>
+      </form>
+    </div>
+
+    <!-- ============================= -->
+    <!-- EJERCICIOS MODERNOS E INTERACTIVOS -->
+    <!-- ============================= -->
+
+    <h2>🎮 Ejercicios Interactivos Modernos</h2>
+
+    <!-- Ejercicio 9: Drag and Drop - Categorizar -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 9: Drag and Drop - Categorize the Words</h3>
+      <p class="instrucciones">Drag each word to the correct category.</p>
+      
+      <div class="drag-drop-container">
+        <div class="drag-source">
+          <h4>📦 Words</h4>
+          <div class="draggable-item" draggable="true">apple</div>
+          <div class="draggable-item" draggable="true">car</div>
+          <div class="draggable-item" draggable="true">banana</div>
+          <div class="draggable-item" draggable="true">bus</div>
+          <div class="draggable-item" draggable="true">orange</div>
+          <div class="draggable-item" draggable="true">train</div>
+        </div>
+        
+        <div>
+          <div class="drop-zone" data-category="fruits">
+            <h4>🍎 Fruits</h4>
+          </div>
+          <br>
+          <div class="drop-zone" data-category="transport">
+            <h4>🚗 Transportation</h4>
+          </div>
+        </div>
+      </div>
+      
+      <button type="button" class="btn-check">Check Answers</button>
+    </div>
+
+    <!-- Ejercicio 10: Drag Words to Gaps -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 10: Drag the Words</h3>
+      <p class="instrucciones">Drag the words from the word bank to fill in the blanks correctly.</p>
+      
+      <div class="word-bank">
+        <div class="word-item" draggable="true">am</div>
+        <div class="word-item" draggable="true">is</div>
+        <div class="word-item" draggable="true">are</div>
+        <div class="word-item" draggable="true">teacher</div>
+        <div class="word-item" draggable="true">students</div>
+      </div>
+      
+      <div class="sentence-with-gaps">
+        <p>
+          Hello! I <span class="gap" data-answer="am"></span> John and I <span class="gap" data-answer="am"></span> a <span class="gap" data-answer="teacher"></span>. 
+          These <span class="gap" data-answer="are"></span> my <span class="gap" data-answer="students"></span>.
+        </p>
+      </div>
+      
+      <button type="button" class="btn-check">Check Answers</button>
+    </div>
+
+    <!-- Ejercicio 11: Ranking/Ordering -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 11: Put in Order</h3>
+      <p class="instrucciones">Drag the items to arrange them in the correct chronological order.</p>
+      
+      <div class="sortable-list">
+        <div class="sortable-item" draggable="true">
+          <span class="drag-handle">☰</span>
+          <span class="item-number">1</span>
+          <span class="sortable-item-content">Wake up</span>
+        </div>
+        <div class="sortable-item" draggable="true">
+          <span class="drag-handle">☰</span>
+          <span class="item-number">2</span>
+          <span class="sortable-item-content">Have lunch</span>
+        </div>
+        <div class="sortable-item" draggable="true">
+          <span class="drag-handle">☰</span>
+          <span class="item-number">3</span>
+          <span class="sortable-item-content">Have breakfast</span>
+        </div>
+        <div class="sortable-item" draggable="true">
+          <span class="drag-handle">☰</span>
+          <span class="item-number">4</span>
+          <span class="sortable-item-content">Go to bed</span>
+        </div>
+        <div class="sortable-item" draggable="true">
+          <span class="drag-handle">☰</span>
+          <span class="item-number">5</span>
+          <span class="sortable-item-content">Have dinner</span>
+        </div>
+      </div>
+      
+      <button type="button" class="btn-check">Check Order</button>
+    </div>
+
+    <!-- Ejercicio 12: Hotspot en Imagen -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 12: Image Hotspots - Click the Objects</h3>
+      <p class="instrucciones">Click on the hotspots in the image to identify the objects.</p>
+      
+      <div class="hotspot-container">
+        <img src="../../imagenes/classroom.jpg" alt="Classroom" class="hotspot-image">
+        <div class="hotspot" style="top: 30%; left: 20%;" data-name="board">
+          <span class="hotspot-label">Board</span>
+        </div>
+        <div class="hotspot" style="top: 50%; left: 50%;" data-name="desk">
+          <span class="hotspot-label">Desk</span>
+        </div>
+        <div class="hotspot" style="top: 60%; left: 75%;" data-name="chair">
+          <span class="hotspot-label">Chair</span>
+        </div>
+      </div>
+      
+      <p style="margin-top: 1rem; text-align: center; color: #64748b;">
+        Click each hotspot to learn the vocabulary!
+      </p>
+    </div>
+
+    <!-- Ejercicio 13: Flashcards -->
+    <div class="ejercicio-box">
+      <h3>Ejercicio 13: Flashcards - Vocabulary Practice</h3>
+      <p class="instrucciones">Click on each card to flip it and see the translation.</p>
+      
+      <div class="flashcards-container">
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <h4>Hello</h4>
+              <p class="flashcard-hint">Click to flip</p>
+            </div>
+            <div class="flashcard-back">
+              <p>Hola</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <h4>Goodbye</h4>
+              <p class="flashcard-hint">Click to flip</p>
+            </div>
+            <div class="flashcard-back">
+              <p>Adiós</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <h4>Thank you</h4>
+              <p class="flashcard-hint">Click to flip</p>
+            </div>
+            <div class="flashcard-back">
+              <p>Gracias</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <h4>Please</h4>
+              <p class="flashcard-hint">Click to flip</p>
+            </div>
+            <div class="flashcard-back">
+              <p>Por favor</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de resultados (feedback) -->
+    <div class="resultado-box" id="resultado" style="display: none;">
+      <h3>📊 Your Results</h3>
+      <div class="score-display">
+        <div class="score-circle">
+          <span class="score-number">8/10</span>
+        </div>
+        <p class="score-message">Great job! Keep practicing!</p>
+      </div>
+      <div class="feedback-details">
+        <p><strong>✓ Correct:</strong> 8 questions</p>
+        <p><strong>✗ Incorrect:</strong> 2 questions</p>
+      </div>
+      <button class="btn-retry">Try Again</button>
+    </div>
+
+    <!-- Recursos Multimedia -->
+    <h2>Ejemplo de Recursos Multimedia</h2>
+
+    <p>A continuación se muestra una imagen ilustrativa:</p>
+    <img src="../../imagenes/clase1.png" alt="Ejemplo de clase de inglés">
+
+    <p>Escucha este audio para practicar la pronunciación:</p>
+    <audio controls>
+      <source src="../../audios/beep.mp3" type="audio/mpeg">
+      Tu navegador no soporta el reproductor de audio.
+    </audio>
+
+    <p>Este vídeo muestra un diálogo de ejemplo:</p>
+    <video controls>
+      <source src="../../videos/video_test_h264.mp4" type="video/mp4">
+      Tu navegador no soporta el reproductor de vídeo.
+    </video>
+
+    <!-- Cita -->
+    <h2>Ejemplo de Cita</h2>
+    <blockquote>
+      "Learning a new language is like becoming a new person."  
+      <br>— Haruki Murakami
+    </blockquote>
+
+    <!-- Frase destacada -->
+    <h2>Ejemplo de Frases Destacadas</h2>
+    <p>Frase útil en inglés para presentarte:</p>
+    <pre><code>Hello, my name is Juan. Nice to meet you!</code></pre>
+
+    <!-- Cajas colapsables -->
+    <div class="consejo collapsible">
+      <div class="collapsible-header">
+        <strong>Consejo</strong>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="collapsible-content">
+        <p>Practica estos saludos en voz alta para ganar fluidez.</p>
+      </div>
+    </div>
+
+    <div class="advertencia collapsible">
+      <div class="collapsible-header">
+        <strong>Advertencia</strong>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="collapsible-content">
+        <p>No olvides repasar antes del examen.</p>
+      </div>
+    </div>
+
+    <div class="recordatorio collapsible">
+      <div class="collapsible-header">
+        <strong>Recordatorio</strong>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="collapsible-content">
+        <p>Revisa las tareas pendientes antes de avanzar.</p>
+      </div>
+    </div>
+
+    <div class="info collapsible">
+      <div class="collapsible-header">
+        <strong>Información</strong>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="collapsible-content">
+        <p>Este tema incluye ejemplos prácticos en la sección de ejercicios.</p>
+      </div>
+    </div>
+
+  </div>
 </div>
+
 <script src="../../js/index.js"></script> 
 <script src="../../js/teoria.js"></script>
+<script>
+// Script básico para funcionalidad de flashcards
+document.querySelectorAll('.flashcard').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('flipped');
+  });
+});
+
+// Script básico para contador de palabras
+const essayTextarea = document.getElementById('essay');
+if (essayTextarea) {
+  essayTextarea.addEventListener('input', function() {
+    const words = this.value.trim().split(/\s+/).filter(word => word.length > 0);
+    document.getElementById('word-count').textContent = words.length;
+  });
+}
+
+// Script básico para cajas desplegables
+document.querySelectorAll('.collapsible').forEach(box => {
+  box.querySelector('.collapsible-header').addEventListener('click', () => {
+    box.classList.toggle('active');
+  });
+});
+</script>
 </body>
 </html>
+
