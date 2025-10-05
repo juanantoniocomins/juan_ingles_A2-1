@@ -1,10 +1,12 @@
-// Diccionario de contenidos dinámicos (rellena cada uno)
-/* ===== Contenidos por Tema/Semana (titulo + puntos) ===== */
+// ==============================================================
+// index.js - Script EXCLUSIVO para index.html
+// ==============================================================
+
 const contenidos = {
   "1": {
-    "1": { titulo: "👋 Week 1", puntos: ["Saludos básicos", "Presentaciones", "Verbo: To be"] },
-    "2": { titulo: "👋 Week 2", puntos: ["Formas cortas con 'to be'", "Preguntas/respuestas simples", "Pronombres personales"] },
-    "3": { titulo: "👋 Week 3", puntos: ["Diálogos prácticos", "Spelling y nombres", "Interacciones cotidianas"] }
+    "1": { titulo: "👋 Week 1", puntos: ["Filling forms", "Personal pronouns", "Verbo: To be", "Introducing youself" , "Numbers: 0-12", "The vowels", "Grettings"] },
+    "2": { titulo: "👋 Week 2", puntos: ["Meeting people", "Question words", "Questions & answers", "Real English situations"] },
+    "3": { titulo: "👋 Week 3", puntos: ["The alphabet", "Numbers: 13-29", "Simple present", "Adverbs of frecuency", "Talking about other people"] }
   },
   "2": {
     "1": { titulo: "⏰ Week 1", puntos: ["Rutinas diarias", "Present Simple (afirmativo)", "Vocabulario: horarios"] },
@@ -23,7 +25,7 @@ const contenidos = {
   },
   "5": {
     "1": { titulo: "🎯 Week 1", puntos: ["Pasatiempos comunes", "Like/Love/Enjoy + gerundio", "Vocabulario de ocio"] },
-    "2": { titulo: "🎯 Week 2", puntos: ["Dislikes/Don’t like", "Prefer/Would rather (intro)", "Opiniones cortas"] },
+    "2": { titulo: "🎯 Week 2", puntos: ["Dislikes/Don't like", "Prefer/Would rather (intro)", "Opiniones cortas"] },
     "3": { titulo: "🎯 Week 3", puntos: ["Escribir sobre tu tiempo libre", "Conectores básicos", "Presentaciones orales breves"] }
   },
   "6": {
@@ -38,12 +40,11 @@ const contenidos = {
   },
   "8": {
     "1": { titulo: "🏥 Week 1", puntos: ["Partes del cuerpo", "Verbo: hurt/ache", "Vocabulario de síntomas"] },
-    "2": { titulo: "🏥 Week 2", puntos: ["Decir cómo te sientes", "Should/Shouldn’t (consejo)", "Farmacia: productos"] },
+    "2": { titulo: "🏥 Week 2", puntos: ["Decir cómo te sientes", "Should/Shouldn't (consejo)", "Farmacia: productos"] },
     "3": { titulo: "🏥 Week 3", puntos: ["Role-play en clínica", "Citas médicas", "Recomendaciones de cuidado"] }
   }
 };
 
-// Modal
 function abrirModal(tema, week) {
   const data = contenidos?.[String(tema)]?.[String(week)];
   const modal = document.getElementById("contenidoModal");
@@ -52,39 +53,53 @@ function abrirModal(tema, week) {
 
   if (!data) {
     title.textContent = `Tema ${tema} · Week ${week}`;
-    body.innerHTML = `<ul><li>Contenido aún no disponible.</li></ul>`;
-    modal.style.display = "block";
-    return;
+    body.innerHTML = `<p style="color:#ef4444;">⚠️ Contenido no encontrado para esta semana.</p>`;
+  } else {
+    title.textContent = data.titulo;
+    const listHTML = data.puntos.map(p => `<li>${p}</li>`).join('');
+    body.innerHTML = `<ul>${listHTML}</ul>`;
   }
 
-  // Título resaltado (Week N con emoji)
-  title.textContent = data.titulo;
-
-  // Lista de puntos
-  const items = data.puntos.map(p => `<li>${p}</li>`).join("");
-  body.innerHTML = `<ul>${items}</ul>`;
-
-  modal.style.display = "block";
+  if (modal) {
+    modal.style.display = "flex";
+  }
 }
 
 function cerrarModal() {
-  document.getElementById("contenidoModal").style.display = "none";
-}
-
-window.onclick = function (e) {
   const modal = document.getElementById("contenidoModal");
-  if (e.target === modal) cerrarModal();
-};
-
-// Acordeón
-function toggleTheme(button) {
-  const content = button.nextElementSibling;
-  const isOpen = content.classList.contains("open");
-  document.querySelectorAll(".theme-toggle").forEach(btn => btn.classList.remove("active"));
-  document.querySelectorAll(".weeks-content").forEach(div => div.classList.remove("open"));
-  if (!isOpen) {
-    button.classList.add("active");
-    content.classList.add("open");
+  if (modal) {
+    modal.style.display = "none";
   }
 }
 
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById("contenidoModal");
+  if (event.target === modal) {
+    cerrarModal();
+  }
+});
+
+// CORREGIDO: Acordeones con las clases correctas del CSS
+function initAccordions() {
+  const sections = document.querySelectorAll('.theme-section');
+  
+  sections.forEach(section => {
+    const toggle = section.querySelector('.theme-toggle');
+    const content = section.querySelector('.weeks-content');
+    
+    if (toggle && content) {
+      toggle.addEventListener('click', function() {
+        // Toggle clase active en el botón
+        toggle.classList.toggle('active');
+        
+        // Toggle clase open en el contenido
+        content.classList.toggle('open');
+      });
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initAccordions();
+  console.log('✅ index.js cargado - Acordeones activos');
+});
