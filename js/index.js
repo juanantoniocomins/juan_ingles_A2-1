@@ -45,6 +45,18 @@ const contenidos = {
   }
 };
 
+const TEMA_NOMBRES = {
+  "1": "Greetings & Introductions",
+  "2": "Daily Routines",
+  "3": "Food & Drinks",
+  "4": "Family & Friends",
+  "5": "Hobbies & Free Time",
+  "6": "Shopping & Money",
+  "7": "Travel & Transport",
+  "8": "Health & Body"
+};
+
+// Función para abrir modal con contenido de la semana
 function abrirModal(tema, week) {
   const data = contenidos?.[String(tema)]?.[String(week)];
   const modal = document.getElementById("contenidoModal");
@@ -79,7 +91,7 @@ window.addEventListener('click', function(event) {
   }
 });
 
-// CORREGIDO: Acordeones con las clases correctas del CSS
+// Inicializar acordeones
 function initAccordions() {
   const sections = document.querySelectorAll('.theme-section');
   
@@ -89,17 +101,29 @@ function initAccordions() {
     
     if (toggle && content) {
       toggle.addEventListener('click', function() {
-        // Toggle clase active en el botón
         toggle.classList.toggle('active');
-        
-        // Toggle clase open en el contenido
         content.classList.toggle('open');
       });
     }
   });
 }
 
+// 🆕 NUEVA FUNCIÓN: Actualizar títulos de temas dinámicamente
+function actualizarTitulosTemas() {
+  const themeSections = document.querySelectorAll('.theme-section');
+  
+  themeSections.forEach((section, index) => {
+    const temaNumber = index + 1; // Los temas van de 1 a 8
+    const themeNameElement = section.querySelector('.theme-name');
+    
+    if (themeNameElement && TEMA_NOMBRES[String(temaNumber)]) {
+      themeNameElement.textContent = TEMA_NOMBRES[String(temaNumber)];
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+  actualizarTitulosTemas(); // Actualizar títulos de temas
   initAccordions();
-  console.log('✅ index.js cargado - Acordeones activos');
+  console.log('✅ index.js cargado - Títulos y acordeones activos');
 });
