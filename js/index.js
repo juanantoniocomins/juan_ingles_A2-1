@@ -46,7 +46,7 @@ const contenidos = {
 };
 
 const TEMA_NOMBRES = {
-  "1": "Greetings & Introductions",
+  "1": "Introduce Yourself",
   "2": "Daily Routines",
   "3": "Food & Drinks",
   "4": "Family & Friends",
