@@ -1,126 +1,179 @@
 // ==============================================================
-// Lógica de Automatización para Teoria.html y Ejercicios.html
-// Este script asume que el objeto 'contenidos' de index.js ya fue cargado.
+// teoria.js - Script EXCLUSIVO para teoria.html
 // ==============================================================
 
-// Mapa para obtener el nombre largo del tema
-const TEMA_NOMBRES = {
-    "1": "Greetings & Introductions",
-    "2": "Daily Routines",
-    "3": "Food & Drinks",
-    "4": "Family & Friends",
-    "5": "Hobbies & Free Time",
-    "6": "Shopping & Money",
-    "7": "Travel & Transport",
-    "8": "Health & Body"
+const contenidos = {
+  "1": {
+    "1": { titulo: "👋 Week 1", puntos: ["Filling forms", "Personal pronouns", "Verbo: To be", "Introducing youself" , "Numbers: 0-12", "The vowels", "Grettings"] },
+    "2": { titulo: "👋 Week 2", puntos: ["Meeting people", "Question words", "Questions & answers", "Real English situations"] },
+    "3": { titulo: "👋 Week 3", puntos: ["The alphabet", "Numbers: 13-29", "Simple present", "Adverbs of frecuency", "Talking about other people"] }
+  },
+  "2": {
+    "1": { titulo: "⏰ Week 1", puntos: ["Rutinas diarias", "Present Simple (afirmativo)", "Vocabulario: horarios"] },
+    "2": { titulo: "⏰ Week 2", puntos: ["Adverbios de frecuencia", "Present Simple (negativo)", "Expresiones de tiempo"] },
+    "3": { titulo: "⏰ Week 3", puntos: ["Preguntas en Present Simple", "Short answers", "Hábitos y frecuencia"] }
+  },
+  "3": {
+    "1": { titulo: "🍎 Week 1", puntos: ["Vocabulario de comida", "Artículos A/AN/THE", "Ofrecer y pedir comida"] },
+    "2": { titulo: "🍎 Week 2", puntos: ["Countable/Uncountable", "Some/Any/Much/Many", "Medidas y cantidades"] },
+    "3": { titulo: "🍎 Week 3", puntos: ["En el restaurante", "Hacer pedidos", "Cortesía básica"] }
+  },
+  "4": {
+    "1": { titulo: "👨‍👩‍👧 Week 1", puntos: ["Miembros de la familia", "Relaciones", "Possessive 's"] },
+    "2": { titulo: "👨‍👩‍👧 Week 2", puntos: ["Adjetivos de personalidad", "Describir personas", "Comparaciones básicas"] },
+    "3": { titulo: "👨‍👩‍👧 Week 3", puntos: ["Hablar de amigos", "Planes sencillos", "Invitaciones y respuestas"] }
+  },
+  "5": {
+    "1": { titulo: "🎯 Week 1", puntos: ["Pasatiempos comunes", "Like/Love/Enjoy + gerundio", "Vocabulario de ocio"] },
+    "2": { titulo: "🎯 Week 2", puntos: ["Dislikes/Don't like", "Prefer/Would rather (intro)", "Opiniones cortas"] },
+    "3": { titulo: "🎯 Week 3", puntos: ["Escribir sobre tu tiempo libre", "Conectores básicos", "Presentaciones orales breves"] }
+  },
+  "6": {
+    "1": { titulo: "🛒 Week 1", puntos: ["Vocabulario de compras", "Precios y números", "This/That/These/Those"] },
+    "2": { titulo: "🛒 Week 2", puntos: ["Money: cost/price/change", "Ofertas y descuentos", "Preguntar disponibilidad"] },
+    "3": { titulo: "🛒 Week 3", puntos: ["Role-play en tienda", "Devolver/Probar productos", "Opiniones y talla"] }
+  },
+  "7": {
+    "1": { titulo: "✈️ Week 1", puntos: ["Transporte básico", "Billetes y horarios", "Asking for information"] },
+    "2": { titulo: "✈️ Week 2", puntos: ["Direcciones en ciudad", "Preposiciones de lugar", "Lugares turísticos"] },
+    "3": { titulo: "✈️ Week 3", puntos: ["Planear un viaje corto", "Reservas simples", "Itinerarios básicos"] }
+  },
+  "8": {
+    "1": { titulo: "🏥 Week 1", puntos: ["Partes del cuerpo", "Verbo: hurt/ache", "Vocabulario de síntomas"] },
+    "2": { titulo: "🏥 Week 2", puntos: ["Decir cómo te sientes", "Should/Shouldn't (consejo)", "Farmacia: productos"] },
+    "3": { titulo: "🏥 Week 3", puntos: ["Role-play en clínica", "Citas médicas", "Recomendaciones de cuidado"] }
+  }
 };
 
-/**
- * Extrae el número de tema y semana de la URL (e.g., /temaX/weekY/pagina.html).
- * @returns {{tema: string, week: string} | null}
- */
+const TEMA_NOMBRES = {
+  "1": "Introduce Yourself",
+  "2": "Daily Routines",
+  "3": "Food & Drinks",
+  "4": "Family & Friends",
+  "5": "Hobbies & Free Time",
+  "6": "Shopping & Money",
+  "7": "Travel & Transport",
+  "8": "Health & Body"
+};
+
 function getTemaAndWeekFromUrl() {
-    // Busca patrones como /tema[1-8]/week[1-3]/ en la ruta de la URL
-    const path = window.location.pathname;
-    const match = path.match(/\/tema(\d+)\/week(\d+)\//i);
-
-    if (match && match.length >= 3) {
-        return {
-            tema: match[1], // Número de Tema (1 a 8)
-            week: match[2]  // Número de Semana (1 a 3)
-        };
-    }
-    return null;
+  const path = window.location.pathname;
+  const match = path.match(/\/tema(\d+)\/week(\d+)\//i);
+  if (match && match.length >= 3) {
+    return { tema: match[1], week: match[2] };
+  }
+  return null;
 }
 
-/**
- * Carga el título y los puntos de resumen en la página si los elementos están presentes.
- */
+function getPageType() {
+  const path = window.location.pathname.toLowerCase();
+  if (path.includes('teoria.html')) return 'teoria';
+  if (path.includes('ejercicios.html')) return 'ejercicios';
+  if (path.includes('examenes.html')) return 'examenes';
+  if (path.includes('extras.html')) return 'extras';
+  return 'teoria';
+}
+
+// ✅ CORREGIDO: Insertar subtítulo DESPUÉS del título y ANTES del resumen
 function cargarContenidoDinamico() {
-    const elementos = getTemaAndWeekFromUrl();
-    
-    // Elementos a rellenar
-    const titleElement = document.querySelector('.topic-title');
-    const pointsElement = document.getElementById('summary-points');
+  const elementos = getTemaAndWeekFromUrl();
+  const titleElement = document.querySelector('.topic-title');
+  const summaryElement = document.querySelector('.week-summary');
+  const pointsElement = document.getElementById('summary-points');
 
-    // Salir si no estamos en una página de tema/semana o si faltan elementos clave
-    // Y si 'contenidos' no está definido (porque no se cargó index.js)
-    if (!elementos || !titleElement || !pointsElement || typeof contenidos === 'undefined') {
-        return;
+  if (!elementos || !titleElement) {
+    return;
+  }
+
+  const { tema, week } = elementos;
+  const themeData = contenidos[tema];
+  const pageType = getPageType();
+
+  if (!themeData || !themeData[week]) {
+    titleElement.textContent = `Tema ${tema} – Contenido no encontrado`;
+    if (pointsElement) {
+      pointsElement.innerHTML = '<li>⚠️ No hay datos para este tema/semana.</li>';
     }
+    return;
+  }
 
-    const { tema, week } = elementos;
-    const themeData = contenidos[tema];
+  const weekData = themeData[week];
+  const themeName = TEMA_NOMBRES[tema] || `Tema ${tema}`;
 
-    // Verificar que los datos existan en el diccionario
-    if (!themeData || !themeData[week]) {
-        titleElement.textContent = `Tema ${tema} – Contenido no encontrado`;
-        pointsElement.innerHTML = `<li>No hay puntos de resumen disponibles.</li>`;
-        return;
-    }
+  // Actualizar título principal
+  titleElement.textContent = `Tema ${tema} – ${themeName} – ${weekData.titulo}`;
 
-    const data = themeData[week];
-    const temaLongName = TEMA_NOMBRES[tema] || `Tema ${tema}`;
+  // Definir subtítulos según tipo de página
+  const subtitulos = {
+    'teoria': '📖 Teoría',
+    'ejercicios': '✏️ Ejercicios',
+    'examenes': '📝 Exámenes',
+    'extras': '⭐ Extras'
+  };
+
+  // ✅ CORRECCIÓN: Insertar el subtítulo DESPUÉS del título y ANTES del resumen
+  let subtitleElement = document.querySelector('.page-subtitle');
+  
+  if (!subtitleElement && titleElement && summaryElement) {
+    // Crear el elemento si no existe
+    subtitleElement = document.createElement('p');
+    subtitleElement.className = 'page-subtitle';
     
-    // 1. Rellenar el Título (h1.topic-title)
-    const weekNumber = data.titulo.match(/\d+/) ? data.titulo.match(/\d+/)[0] : week;
-    titleElement.textContent = `Tema ${tema} – ${temaLongName} – Week ${weekNumber}`;
+    // Insertar DESPUÉS del título (.topic-title) y ANTES del resumen (.week-summary)
+    titleElement.parentNode.insertBefore(subtitleElement, summaryElement);
+  }
+  
+  if (subtitleElement) {
+    subtitleElement.textContent = subtitulos[pageType] || '';
+  }
 
-    // 2. Rellenar los Puntos de Resumen (ul#summary-points)
-    const items = data.puntos.map(p => `<li>${p}</li>`).join("");
-    pointsElement.innerHTML = items;
-
-    // Opcional: Actualizar el <title> de la página
-    document.title = titleElement.textContent;
+  // Actualizar puntos de resumen
+  if (pointsElement) {
+    const listItems = weekData.puntos.map(punto => `<li>${punto}</li>`).join('');
+    pointsElement.innerHTML = listItems;
+  }
 }
 
-// Ejecutar la función cuando el documento esté listo
-document.addEventListener('DOMContentLoaded', cargarContenidoDinamico);
-
-
-// ==============================================================
-// Inserción dinámica de subtítulo según la página actual
-// ==============================================================
-
-document.addEventListener('DOMContentLoaded', function() {
-    const mainTitle = document.querySelector('h1.topic-title');
-    const summaryBox = document.querySelector('.week-summary');
-    if (!mainTitle || !summaryBox) return;
-
-    const file = window.location.href.split('/').pop().split('?')[0].split('#')[0].toLowerCase();
-    let subtitleText = '';
-
-    if (file === 'teoria.html') subtitleText = 'Teoría';
-    else if (file === 'ejercicios.html') subtitleText = 'Ejercicios';
-    else if (file === 'examenes.html') subtitleText = 'Exámenes';
-    else if (file === 'extras.html') subtitleText = 'Extras';
-
-    if (subtitleText) {
-        const subtitle = document.createElement('h2');
-        subtitle.textContent = subtitleText;
-        subtitle.className = 'page-subtitle';
-        // Insertar justo antes de la caja de resumen
-        mainTitle.insertAdjacentElement('afterend', subtitle);
-    }
-});
-// ==============================================================
-// Cajas desplegables con flecha (Consejo, Advertencia, etc.)
-// ==============================================================
-
-document.addEventListener('DOMContentLoaded', function() {
+function initCollapsibles() {
   const collapsibles = document.querySelectorAll('.collapsible');
-  collapsibles.forEach(box => {
-    const header = box.querySelector('.collapsible-header');
-    const arrow = box.querySelector('.arrow');
-    header.addEventListener('click', () => {
-      box.classList.toggle('active');
-      // Cambiar símbolo ▶ / ▼
-      if (box.classList.contains('active')) {
-        arrow.textContent = '▼';
-      } else {
-        arrow.textContent = '▶';
+  
+  collapsibles.forEach(item => {
+    const header = item.querySelector('.collapsible-header');
+    
+    if (header) {
+      header.addEventListener('click', function() {
+        item.classList.toggle('active');
+      });
+    }
+  });
+}
+
+function initTranslationToggle() {
+  const buttons = document.querySelectorAll('.translate-button');
+  
+  buttons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Encuentra la caja de traducción que sigue inmediatamente después del botón
+      const translationBox = this.nextElementSibling;
+      
+      if (translationBox && translationBox.classList.contains('translation-box')) {
+        // Muestra u oculta la caja de traducción
+        if (translationBox.style.display === 'none' || translationBox.style.display === '') {
+          translationBox.style.display = 'block';
+          this.textContent = 'Ocultar Traducción';
+        } else {
+          translationBox.style.display = 'none';
+          this.textContent = 'Traducir';
+        }
       }
     });
   });
-});
+}
 
+document.addEventListener('DOMContentLoaded', function() {
+  cargarContenidoDinamico();
+  initCollapsibles();
+  initTranslationToggle();
+  
+  console.log('✅ teoria.js cargado - Automatización completa');
+});
