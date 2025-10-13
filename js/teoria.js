@@ -177,3 +177,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   console.log('✅ teoria.js cargado - Automatización completa');
 });
+
+// Marcar teoría como completada cuando se visita
+if (window.ProgressSystem) {
+  const progress = new window.ProgressSystem();
+  const { tema, week } = getTemaAndWeekFromUrl();
+  if (tema && week) {
+    progress.markTheoryComplete(tema, week);
+  }
+}
