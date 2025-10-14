@@ -1169,4 +1169,3 @@ if (document.readyState === 'loading') {
     renderProgressDashboard();
   }
 }
-
