@@ -1,4 +1,3 @@
-
 // ==============================================================
 // ejercicios-sistema.js - Sistema Universal de Ejercicios
 // ==============================================================
@@ -407,7 +406,8 @@ const EjerciciosUniversal = {
   activarEjercicio(tipo, id, box) {
     const handlers = {
       'fill-blanks': () => this.initFillBlanks(id, box),
-      'multiple-choice': () => this.initMultipleChoice(id, box),
+      'multiple-choice': () => this.initMultipleChoice(id, box),     
+      'listening-mc': () => this.initMultipleChoice(id, box),      
       'true-false': () => this.initTrueFalse(id, box),
       'matching': () => this.initMatching(id, box),
       'word-order': () => this.initWordOrder(id, box),
@@ -428,7 +428,9 @@ const EjerciciosUniversal = {
       'transformation': () => this.initTransformation(id, box),
       'verb-tenses': () => this.initVerbTenses(id, box),
       'prepositions': () => this.initPrepositions(id, box),
-      'categorization': () => this.initCategorization(id, box)
+      'categorization': () => this.initCategorization(id, box),
+      'multiple-choice-select': () => this.initMultipleChoice(id, box),
+      'multiple-choice-select': () => this.initMatching(id, box)          
     };
 
     if (handlers[tipo]) {
@@ -650,64 +652,71 @@ const EjerciciosUniversal = {
     }
   },
 
-  mostrarResultado(puntos, maxPuntos, idEjercicio) {
-    const porcentaje = Math.round((puntos / maxPuntos) * 100);
+mostrarResultado(puntos, maxPuntos, idEjercicio) {
+  const porcentaje = Math.round((puntos / maxPuntos) * 100);
 
-    let mensaje, emoji;
-    if (porcentaje === 100) {
-      mensaje = 'Perfecto'; emoji = '🌟';
-    } else if (porcentaje >= 80) {
-      mensaje = 'Muy bien'; emoji = '😊';
-    } else if (porcentaje >= 60) {
-      mensaje = 'Buen trabajo'; emoji = '🙂';
-    } else {
-      mensaje = 'Sigue practicando'; emoji = '📚';
-    }
+  let mensaje, emoji;
+  if (porcentaje === 100) {
+    mensaje = 'Perfecto'; emoji = '🌟';
+  } else if (porcentaje >= 80) {
+    mensaje = 'Muy bien'; emoji = '😊';
+  } else if (porcentaje >= 60) {
+    mensaje = 'Buen trabajo'; emoji = '🙂';
+  } else {
+    mensaje = 'Sigue practicando'; emoji = '📚';
+  }
 
-    const modal = document.createElement('div');
-    modal.style.cssText = `
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.7); display: flex;
-      align-items: center; justify-content: center; z-index: 10000;
-      animation: fadeIn 0.3s ease;
-    `;
+  const modal = document.createElement('div');
+  modal.style.cssText = `
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7); display: flex;
+    align-items: center; justify-content: center; z-index: 10000;
+    animation: fadeIn 0.3s ease;
+  `;
 
-    modal.innerHTML = `
-      <div style="
-        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-        border: 3px solid #10b981; border-radius: 16px; padding: 3rem;
-        text-align: center; max-width: 500px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      ">
-        <div style="font-size: 4rem; margin-bottom: 1rem;">${emoji}</div>
-        <h2 style="color: #047857; font-size: 2rem; margin-bottom: 1rem;">${mensaje}</h2>
-        <div style="
-          width: 140px; height: 140px; margin: 2rem auto; border-radius: 50%;
-          background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-          display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
-        ">
-          <span style="color: white; font-size: 3rem; font-weight: 800;">${porcentaje}%</span>
-        </div>
-        <p style="color: #065f46; font-size: 1.2rem; margin: 1.5rem 0;">
-          <strong>${puntos}</strong> de <strong>${maxPuntos}</strong> correctas
-        </p>
-        <button onclick="this.parentElement.parentElement.remove()" style="
-          background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
-          color: white; border: none; border-radius: 10px;
-          padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 700;
-          cursor: pointer; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-          transition: all 0.3s ease; margin-top: 1rem;
-        " onmouseover="this.style.transform='translateY(-2px)'" 
-           onmouseout="this.style.transform='translateY(0)'">
-          Continuar
-        </button>
+  modal.innerHTML = `
+    <div style="
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 3px solid #10b981; border-radius: 16px; padding: 3rem;
+      text-align: center; width: 500px; min-height: 520px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      display: flex; flex-direction: column; justify-content: space-between;
+    ">
+      <div style="font-size: 4rem; margin-bottom: 1rem; height: 80px; display: flex; align-items: center; justify-content: center;">
+        ${emoji}
       </div>
-    `;
+      <h2 style="color: #047857; font-size: 2rem; margin-bottom: 1rem; font-weight: 800; height: 60px; display: flex; align-items: center; justify-content: center;">
+        ${mensaje}
+      </h2>
+      <div style="
+        width: 160px; height: 160px; margin: 2rem auto; border-radius: 50%;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4); flex-shrink: 0;
+      ">
+        <span style="color: white; font-size: 3.5rem; font-weight: 800; line-height: 1;">
+          ${porcentaje}%
+        </span>
+      </div>
+      <p style="color: #065f46; font-size: 1.2rem; margin: 1.5rem 0; font-weight: 600; height: 40px; display: flex; align-items: center; justify-content: center;">
+        <strong>${puntos}</strong> <span style="margin: 0 0.3rem;">de</span> <strong>${maxPuntos}</strong><span style="margin: 0 0.1rem;"></span>correctas.
+      </p>
+      <button onclick="this.parentElement.parentElement.remove()" style="
+        background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        color: white; border: none; border-radius: 10px;
+        padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 700;
+        cursor: pointer; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        transition: all 0.3s ease; margin-top: 1rem; width: 100%;
+      " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(59, 130, 246, 0.4)'" 
+         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.3)'">
+        Continuar
+      </button>
+    </div>
+  `;
 
-    document.body.appendChild(modal);
-    this.guardarPuntuacion(idEjercicio, puntos, maxPuntos, porcentaje);
-  },
+  document.body.appendChild(modal);
+  this.guardarPuntuacion(idEjercicio, puntos, maxPuntos, porcentaje);
+},
 
   guardarPuntuacion(idEjercicio, puntos, maxPuntos, porcentaje) {
     const clave = `tema${this.config.tema}_week${this.config.week}`;
