@@ -78,17 +78,54 @@ body {
 
 /* NIVEL 1: H2 - Títulos Principales (MÁXIMA PROMINENCIA) */
 .content h2 {
-  font-size: 1.6rem;
-  color: #1e3a8a; /* Azul oscuro fuerte */
-  font-weight: 800;
-  letter-spacing: -0.4px;
+  position: relative;
+  padding-right: 4rem; /* Espacio para el botón */  
+  font-size: 1.7rem;
+  color: #ffffff !important;
+  font-weight: 900;
+  letter-spacing: 0.3px;
   text-align: left;
   margin: 2.5rem 0 1.5rem 0;
-  padding: 0.9rem 1rem;
-  border: 4px solid #10b981; /* Verde fuerte */
+  padding: 1rem 1.2rem;
+  border: 4px solid #047857;
   border-radius: 8px;
-  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 50%, #6ee7b7 100%);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 
+    0 4px 12px rgba(16, 185, 129, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2); /* Brillo interno */
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 10px rgba(255, 255, 255, 0.1); /* Doble sombra */
+}
+
+.back-to-summary {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.back-to-summary:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.5);
+}
+
+.back-to-summary:active {
+  transform: translateY(-50%) scale(0.95);
 }
 
 /* NIVEL 2A: H3 - Títulos Secundarios (Prominencia media-alta) */
@@ -149,6 +186,59 @@ body {
   border-radius: 10px;
   border: 2px solid #bfdbfe;
   box-shadow: 0 2px 6px rgba(59, 130, 246, 0.08);
+}
+
+/* ============================================ */
+/* ENLACES DEL RESUMEN A SECCIONES H2 */
+/* ============================================ */
+.week-summary ul li a.summary-link {
+  text-decoration: none;
+  color: #1e293b;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+  padding-left: 0.5rem;
+  font-weight: 500;
+}
+
+.week-summary ul li a.summary-link:hover {
+  color: #10b981;
+  transform: translateX(5px);
+}
+
+.week-summary ul li a.summary-link::before {
+  content: "→";
+  position: absolute;
+  left: -1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: #10b981;
+  font-weight: bold;
+}
+
+.week-summary ul li a.summary-link:hover::before {
+  opacity: 1;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Destacar sección cuando llegas por anchor */
+.content h2:target {
+  animation: highlight 2s ease;
+}
+
+@keyframes highlight {
+  0% {
+    background: #fef3c7;
+    transform: scale(1.02);
+  }
+  100% {
+    background: inherit;
+    transform: scale(1);
+  }
 }
 
 /* ============================= */
@@ -534,6 +624,44 @@ tbody tr:last-child td:last-child {
   color: #10b981;
   font-size: 1.5rem;
   letter-spacing: 1rem;
+}
+
+/* ============================================ */
+/* SEPARADOR PRINCIPAL DE APARTADOS */
+/* ============================================ */
+hr.section-divider-main {
+  border: none !important;
+  margin: 4rem 0 !important;
+  text-align: center;
+  position: relative;
+  height: 60px !important; /* Altura fija en lugar de auto */
+  background: transparent !important;
+  display: flex !important; /* Usar flex para centrar */
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+hr.section-divider-main::before {
+  content: "━━━━━ 📚 END OF SECTION 📚 ━━━━━";
+  color: #10b981;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  display: inline-block;
+  background: white;
+  padding: 0.5rem 2rem;
+  border: 2px solid #10b981;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  position: relative; /* Asegurar que no herede position absolute */
+  transform: none; /* Resetear cualquier transform heredado */
+}
+
+/* Resetear cualquier ::after heredado */
+hr.section-divider-main::after {
+  content: none !important;
+  display: none !important;
 }
 
 /* ============================= */
