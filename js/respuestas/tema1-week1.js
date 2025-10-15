@@ -230,7 +230,77 @@ configurarEjercicios({
       'listen15-12': 'b',  // 07912548367
       'listen15-13': 'b',  // from
       'listen15-14': 'b'   // in
+    },
+    // EJERCICIO 16: Listening Comprehension - Selects (12 preguntas)
+    'listening-8e': {
+      'listen8e-1': 'Garcia',
+      'listen8e-2': 'Yes, she is',
+      'listen8e-3': 'No, she is Mexican',
+      'listen8e-4': 'Single',
+      'listen8e-5': 'In Monterrey',
+      'listen8e-6': 'No, she is a Medical student',
+      'listen8e-7': 'Student',
+      'listen8e-8': 'Mexican',
+      // Q9: mobile phone number
+      'listen8e-9': '5523649870',
+      // Q10: Is she not married?
+      'listen8e-10': 'Yes, she is single'
+    },
+    // EJERCICIO 17: Fill-in-the-blanks - Numbers 0-12
+    'fill-blanks-17': {
+      'q1': 'one',
+      'q2': 'five',
+      'q3': 'two',
+      'q4': 'twelve',
+      'q5': 'seven',
+      'q6': 'three',
+      'q7': 'eleven',
+      'q8': 'zero',
+      'q9': 'four',
+      'q10': 'nine',
+      'q11': 'six',
+      'q12': 'ten',
+      'q13': 'eight'
+    },
+    // EJERCICIO 18: The Vowels - Listen and Write
+    'listen-vowels-8a': {
+      'vowel8a-1': 'e',  // Minúsculas (más claro)
+      'vowel8a-2': 'a',
+      'vowel8a-3': 'u',
+      'vowel8a-4': 'i',
+      'vowel8a-5': 'o'
+    },
+    // EJERCICIO 19: Greetings and Farewells - Multiple Choice 3x3
+    'mc-2b': {
+        'mc2b-1': 'b',   // Good morning (8:00 AM)
+        'mc2b-2': 'b',   // Nice to meet you (first time)
+        'mc2b-3': 'b',   // Good evening (7:00 PM)
+        'mc2b-4': 'c',   // Goodbye (leaving)
+        'mc2b-5': 'b',   // Hi! What's up? (casual greeting)
+        'mc2b-6': 'a',   // Good night (before bed)
+        'mc2b-7': 'b',   // See you tomorrow
+        'mc2b-8': 'b',   // Dear Mr. Smith (formal email)
+        'mc2b-9': 'a',   // I'm fine, thanks
+        'mc2b-10': 'b',  // Good afternoon (2:00 PM)
+        'mc2b-11': 'b',  // Pleased to meet you (very formal)
+        'mc2b-12': 'a'   // See you later
+    },
+    // EJERCICIO 20: Greetings and Verb to be - Cloze Test Word Bank
+    'cloze-20': {
+      'cloze20-1': 'Good morning',
+      'cloze20-2': 'am',
+      'cloze20-3': 'am',
+      'cloze20-4': 'Nice to meet you',
+      'cloze20-5': 'How are you',
+      'cloze20-6': 'am',
+      'cloze20-7': 'am',
+      'cloze20-8': 'fine',
+      'cloze20-9': 'are',
+      'cloze20-10': 'from',
+      'cloze20-11': 'am',
+      'cloze20-12': 'is',
+      'cloze20-13': 'See you later',
+      'cloze20-14': 'Goodbye'
     }
   }
 });
-
