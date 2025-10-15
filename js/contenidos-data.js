@@ -47,7 +47,7 @@ const CONTENIDOS_DATA = {
 
 const TEMA_NOMBRES = {
   "1": "Introduce Yourself",
-  "2": "Daily Routines",
+  "2": "Getting To Know Each Other: Who's Who?",
   "3": "Food & Drinks",
   "4": "Family & Friends",
   "5": "Hobbies & Free Time",
