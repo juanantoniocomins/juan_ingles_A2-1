@@ -29,13 +29,21 @@ function cargarContenidoDinamico() {
   const summaryElement = document.querySelector('.week-summary');
   const pointsElement = document.getElementById('summary-points');
 
+  console.log('🔍 Elementos detectados:', elementos);
+  console.log('📍 pointsElement encontrado:', pointsElement);
+
   if (!elementos || !titleElement) {
+    console.error('❌ No se encontraron elementos o título');
     return;
   }
 
   const { tema, week } = elementos;
   const themeData = contenidos[tema];
   const pageType = getPageType();
+
+  console.log('📚 Tema:', tema, 'Week:', week);
+  console.log('📊 themeData:', themeData);
+  console.log('📖 weekData:', themeData?.[week]);
 
   if (!themeData || !themeData[week]) {
     titleElement.textContent = `Tema ${tema} – Contenido no encontrado`;
@@ -71,7 +79,9 @@ function cargarContenidoDinamico() {
 
   if (pointsElement) {
     const listItems = weekData.puntos.map(punto => `<li>${punto}</li>`).join('');
+    console.log('📝 Actualizando resumen con:', weekData.puntos);
     pointsElement.innerHTML = listItems;
+    console.log('✅ innerHTML actualizado');
   }
 }
 
@@ -79,56 +89,81 @@ function cargarContenidoDinamico() {
 function generarEnlacesSecciones() {
   const pointsElement = document.getElementById('summary-points');
   
-  if (!pointsElement) return;
+  if (!pointsElement) {
+    console.log('❌ No se encontró #summary-points');
+    return;
+  }
   
+  // Asignar ID al contenedor del resumen para poder hacer scroll hacia él
   const summaryContainer = document.querySelector('.week-summary');
   if (summaryContainer && !summaryContainer.id) {
     summaryContainer.id = 'resumen-secciones';
   }
   
-  const headings = document.querySelectorAll('.content h2');
-  
-  // ✅ SI NO HAY H2, NO HACER NADA (mantener el contenido de cargarContenidoDinamico)
-  if (headings.length === 0) return;
-  
-  // ✅ SI HAY H2, ENTONCES SÍ generar los enlaces automáticos
-  pointsElement.innerHTML = '';
-  
-  headings.forEach((heading, index) => {
-    if (!heading.id) {
-      const text = heading.textContent.trim();
-      const id = text
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/^-+|-+$/g, '');
-      
-      heading.id = id;
+  // ⚠️ ESPERAR a que el contenido se cargue completamente
+  setTimeout(() => {
+    // Buscar todos los H2 dentro de .content
+    const headings = document.querySelectorAll('.content h2');
+    
+    console.log(`🔍 H2 encontrados: ${headings.length}`);
+    
+    // ✅ SI NO HAY H2, NO HACER NADA (mantener el contenido de cargarContenidoDinamico)
+    if (headings.length === 0) {
+      console.log('✅ No hay H2, manteniendo contenido del objeto contenidos');
+      return;
     }
     
-    const li = document.createElement('li');
-    const link = document.createElement('a');
+    // ✅ SI HAY H2, ENTONCES SÍ generar los enlaces automáticos
+    console.log('✅ Hay H2, generando enlaces automáticos...');
     
-    const text = heading.textContent
-      .replace(/^[^\w\s]+\s*/, '')
-      .trim();
+    // Limpiar la lista actual
+    pointsElement.innerHTML = '';
     
-    link.href = `#${heading.id}`;
-    link.textContent = text;
-    link.className = 'summary-link';
+    // Crear un enlace para cada H2
+    headings.forEach((heading, index) => {
+      // Generar ID automáticamente si no existe
+      if (!heading.id) {
+        // Crear ID basado en el texto del heading
+        const text = heading.textContent.trim();
+        const id = text
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, '') // Quitar caracteres especiales excepto guiones
+          .replace(/\s+/g, '-')      // Espacios a guiones
+          .replace(/^-+|-+$/g, '');  // Quitar guiones al inicio/final
+        
+        heading.id = id;
+      }
+      
+      // Crear el elemento <li> con el enlace
+      const li = document.createElement('li');
+      const link = document.createElement('a');
+      
+      // Extraer texto sin emojis al inicio
+      const text = heading.textContent
+        .replace(/^[^\w\s]+\s*/, '') // Quitar emojis al inicio
+        .trim();
+      
+      link.href = `#${heading.id}`;
+      link.textContent = text;
+      link.className = 'summary-link';
+      
+      li.appendChild(link);
+      pointsElement.appendChild(li);
+      
+      // ✅ AÑADIR BOTÓN "VOLVER AL RESUMEN" EN CADA H2
+      const backButton = document.createElement('a');
+      backButton.href = '#resumen-secciones';
+      backButton.className = 'back-to-summary';
+      backButton.innerHTML = '↑';
+      backButton.title = 'Volver al resumen';
+      
+      // Asegurar que el H2 tenga position relative
+      heading.style.position = 'relative';
+      heading.appendChild(backButton);
+    });
     
-    li.appendChild(link);
-    pointsElement.appendChild(li);
-    
-    const backButton = document.createElement('a');
-    backButton.href = '#resumen-secciones';
-    backButton.className = 'back-to-summary';
-    backButton.innerHTML = '↑';
-    backButton.title = 'Volver al resumen';
-    
-    heading.style.position = 'relative';
-    heading.appendChild(backButton);
-  });
+    console.log('✅ Enlaces generados correctamente');
+  }, 200); // Aumentado a 200ms para mayor seguridad
 }
 
 function initCollapsibles() {
@@ -166,8 +201,8 @@ function initTranslationToggle() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  cargarContenidoDinamico();
-  generarEnlacesSecciones();
+cargarContenidoDinamico();
+  generarEnlacesSecciones(); // Ya no necesita setTimeout aquí
   initCollapsibles();
   initTranslationToggle();
   
