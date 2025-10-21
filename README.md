@@ -23,6 +23,15 @@ Cada sección aborda temas esenciales de gramática, vocabulario y comprensión.
 
 ---
 
-## 📁 Estructura general
+👤 Autor
 
+Juan Antonio Comins
+💼 Técnico e instructor apasionado por la programación y la educación.
+📧 juanantoniocomins@gmail.com
+
+🌐 GitHub - juanantoniocomins
+
+📝 Licencia
+
+Este proyecto se distribuye bajo la licencia MIT, lo que permite su libre uso y modificación siempre que se mantengan los créditos originales.
 
