@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 Exámenes - Tema 1 – Week 1</title>
+    <link rel="stylesheet" href="../../css/ejercicios.css">
+    <link rel="stylesheet" href="../../css/examenes.css">
+</head>
+<body>
+    <div class="container">
+        <!-- CABECERA -->
+        <div class="header">
+            <a href="index.html" class="back-button">
+                🏠 Inicio
+            </a>
+        </div>
+
+        <div class="content">
+            <!-- TÍTULO CON ESTILO VERDE -->
+            <div class="exam-main-header">
+                <h1>📝 Bienvenido al Sistema de Exámenes</h1>
+            </div>
+
+            <!-- TEXTO INTRODUCTORIO -->
+            <div class="intro-box">
+                <p>Este examen consta de <strong>20 preguntas aleatorias</strong> seleccionadas de un banco de preguntas sobre los contenidos del <strong>Tema 1</strong>: <strong>Week 1</strong>.</p>
+                
+                <p><strong>Instrucciones:</strong></p>
+                <ul>
+                  <li>✍️ Responde todas las preguntas</li>
+                  <li>⏰ El examen tiene un <strong>temporizador</strong> visible</li>
+                  <li>💬 Recibirás feedback inmediato al enviar</li>
+                  <li>🔄 Puedes reiniciar el examen para practicar con nuevas preguntas</li>
+                </ul>
+            </div>
+
+            <!-- TEMPORIZADOR Y BOTÓN INICIAR -->
+            <div class="exam-timer-container">
+                <p class="timer-label">⏱️ Tiempo transcurrido</p>
+                <div class="exam-timer" id="examTimer">00:00</div>
+                <button class="btn-primary" id="startExamBtn">🚀 Iniciar Examen</button>
+            </div>
+
+            <!-- CONTENEDOR DE PREGUNTAS -->
+            <div id="examQuestionsContainer" class="exam-questions-area" style="display: none;">
+                <!-- Las preguntas se generarán dinámicamente aquí -->
+            </div>
+
+            <!-- BOTÓN ENVIAR EXAMEN -->
+            <div class="exam-submit-area" id="submitArea" style="display: none;">
+                <button class="btn-success" id="submitExamBtn">✅ Enviar Examen</button>
+            </div>
+
+            <!-- PANEL DE RESULTADOS -->
+            <div class="results-panel" id="resultsPanel">
+                <!-- Los resultados se mostrarán aquí -->
+            </div>
+
+            <!-- BOTÓN REINICIAR -->
+            <div class="action-buttons" id="retryButtonArea" style="display: none;">
+                <button class="btn-retry" id="retryExamBtn">🔄 Reiniciar Examen</button>
+            </div>
+
+            <!-- PANEL DE REVISIÓN DE RESPUESTAS -->
+            <div class="answers-review-panel" id="answersReviewPanel" style="display: none;">
+                <!-- La revisión detallada se mostrará aquí -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ⚠️ IMPORTANTE: CARGAR tema1-week1-examenes.js PRIMERO -->
+    <script src="../../js/respuestas/tema1-week1-examenes.js"></script>
+    <!-- Y DESPUÉS exam-engine.js -->
+    <script src="../../js/exam-engine.js"></script>
+</body>
+</html>
 
