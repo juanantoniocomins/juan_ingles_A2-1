@@ -9,70 +9,152 @@
 </head>
 <body>
     <div class="container">
-        <!-- CABECERA -->
-        <div class="header">
-            <a href="index.html" class="back-button">
-                🏠 Inicio
-            </a>
-        </div>
 
-        <div class="content">
-            <!-- TÍTULO CON ESTILO VERDE -->
-            <div class="exam-main-header">
-                <h1>📝 Bienvenido al Sistema de Exámenes</h1>
-            </div>
+      <!-- TÍTULO CON ESTILO VERDE Y BOTÓN DE INICIO -->
+      <div class="exam-main-header">
+          <h1>📝 Bienvenido al Sistema de Exámenes</h1>
+          <a href="../../index.html" class="back-button-green">
+              🏠 Inicio
+          </a>
+      </div>
 
-            <!-- TEXTO INTRODUCTORIO -->
-            <div class="intro-box">
-                <p>Este examen consta de <strong>20 preguntas aleatorias</strong> seleccionadas de un banco de preguntas sobre los contenidos del <strong>Tema 1</strong>: <strong>Week 1</strong>.</p>
-                
-                <p><strong>Instrucciones:</strong></p>
-                <ul>
-                  <li>✍️ Responde todas las preguntas</li>
-                  <li>⏰ El examen tiene un <strong>temporizador</strong> visible</li>
-                  <li>💬 Recibirás feedback inmediato al enviar</li>
-                  <li>🔄 Puedes reiniciar el examen para practicar con nuevas preguntas</li>
-                </ul>
-            </div>
+      <!-- TÍTULO PRINCIPAL DEL TEMA -->
+      <div class="topic-title-clean">
+          <h2 class="topic-title-text"><strong>Tema 1: Week 1</strong> - Introduce Yourself</h2>
+          <div class="topic-title-line-animated"></div>
+      </div>
 
-            <!-- TEMPORIZADOR Y BOTÓN INICIAR -->
-            <div class="exam-timer-container">
-                <p class="timer-label">⏱️ Tiempo transcurrido</p>
-                <div class="exam-timer" id="examTimer">00:00</div>
-                <button class="btn-primary" id="startExamBtn">🚀 Iniciar Examen</button>
-            </div>
+      <div class="content">
 
-            <!-- CONTENEDOR DE PREGUNTAS -->
-            <div id="examQuestionsContainer" class="exam-questions-area" style="display: none;">
-                <!-- Las preguntas se generarán dinámicamente aquí -->
-            </div>
+          <!-- BANNER INTRODUCTORIO -->
+          <div class="intro-banner">
+              <span class="intro-icon">🎯</span>
+              <div class="intro-content">
+                  <strong>¡A por ello!</strong> Este examen tiene <strong>20 preguntas aleatorias</strong>.
+              </div>
+          </div>
 
-            <!-- BOTÓN ENVIAR EXAMEN -->
-            <div class="exam-submit-area" id="submitArea" style="display: none;">
-                <button class="btn-success" id="submitExamBtn">✅ Enviar Examen</button>
-            </div>
+          <!-- CAJAS DUALES: CONTENIDOS E INSTRUCCIONES -->
+          <div class="dual-boxes-container">
+              <!-- CAJA IZQUIERDA: CONTENIDOS -->
+              <div class="info-box info-box-left">
+                  <h3 class="box-title">📚 Contenidos</h3>
+                  <ul class="box-list">
+                      <li>✅ Filling Forms</li>
+                      <li>✅ Personal Pronouns</li>
+                      <li>✅ Verb: To Be</li>
+                      <li>✅ Introducing Yourself</li>
+                      <li>✅ Numbers: 1-12</li>
+                      <li>✅ The Vowels</li>
+                      <li>✅ Greetings</li>
+                  </ul>
+              </div>
 
-            <!-- PANEL DE RESULTADOS -->
-            <div class="results-panel" id="resultsPanel">
-                <!-- Los resultados se mostrarán aquí -->
-            </div>
+              <!-- CAJA DERECHA: INSTRUCCIONES -->
+              <div class="info-box info-box-right">
+                  <h3 class="box-title">📋 Instrucciones</h3>
+                  <ul class="box-list">
+                      <li>✍️ Responde todas las preguntas</li>
+                      <li>⏰ El examen tiene un <strong>temporizador</strong> visible</li>
+                      <li>💬 Recibirás feedback inmediato al enviar</li>
+                      <li>🔄 Puedes reiniciar el examen para practicar con nuevas preguntas</li>
+                  </ul>
+              </div>
+          </div>
 
-            <!-- BOTÓN REINICIAR -->
-            <div class="action-buttons" id="retryButtonArea" style="display: none;">
-                <button class="btn-retry" id="retryExamBtn">🔄 Reiniciar Examen</button>
-            </div>
+          <!-- TEMPORIZADOR, BOTÓN Y TEMA - DISEÑO EN 3 COLUMNAS REORDENADO -->
+          <div class="exam-timer-container-three-cols">
+              <!-- COLUMNA 1: Temporizador REDISEÑADO (izquierda) -->
+              <div class="timer-col">
+                  <div class="timer-badge-new" id="examTimer">
+                      <div class="timer-main-info">
+                          <span class="timer-icon-badge">⏱️</span>
+                          <div class="timer-content-badge">
+                              <span class="timer-label-badge">Tiempo</span>
+                              <span class="timer-value-badge">00:00</span>
+                          </div>
+                      </div>
+                      <div class="timer-controls">
+                          <button 
+                              class="timer-control-btn" 
+                              id="timerPauseBtn" 
+                              onclick="pausarTemporizador()" 
+                              title="Pausar"
+                              style="display: none;"
+                          >
+                              ⏸️
+                          </button>
+                          <button 
+                              class="timer-control-btn" 
+                              id="timerPlayBtn" 
+                              onclick="reanudarTemporizador()" 
+                              title="Reanudar"
+                              style="display: none;"
+                          >
+                              ▶️
+                          </button>
+                          <button 
+                              class="timer-control-btn" 
+                              id="timerResetBtn" 
+                              onclick="resetearTemporizador()" 
+                              title="Reiniciar tiempo"
+                              style="display: none;"
+                          >
+                              🔄
+                          </button>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- COLUMNA 2: Botón (centro) -->
+              <div class="button-col-center">
+                  <button class="btn-start-center" id="startExamBtn">
+                      🚀 Iniciar Examen
+                  </button>
+              </div>
+              
+              <!-- COLUMNA 3: Título del tema (derecha - solo tema principal) -->
+              <div class="theme-col-right">
+                  <div class="theme-badge-wide">
+                      <span class="theme-icon">📚</span>
+                      <div class="theme-text">
+                          <span class="theme-title">TEMA 1: WEEK 1</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
 
-            <!-- PANEL DE REVISIÓN DE RESPUESTAS -->
-            <div class="answers-review-panel" id="answersReviewPanel" style="display: none;">
-                <!-- La revisión detallada se mostrará aquí -->
-            </div>
-        </div>
-    </div>
+          <!-- CONTENEDOR DE PREGUNTAS -->
+          <div id="examQuestionsContainer" class="exam-questions-area" style="display: none;">
+              <!-- Las preguntas se generarán dinámicamente aquí -->
+          </div>
 
+          <!-- BOTÓN ENVIAR EXAMEN -->
+          <div class="exam-submit-area" id="submitArea" style="display: none;">
+              <button class="btn-success" id="submitExamBtn">✅ Enviar Examen</button>
+          </div>
+
+          <!-- PANEL DE RESULTADOS -->
+          <div class="results-panel" id="resultsPanel">
+              <!-- Los resultados se mostrarán aquí -->
+          </div>
+
+          <!-- BOTÓN REINICIAR -->
+          <div class="action-buttons" id="retryButtonArea" style="display: none;">
+              <button class="btn-retry" id="retryExamBtn">🔄 Reiniciar Examen</button>
+          </div>
+
+          <!-- PANEL DE REVISIÓN DE RESPUESTAS -->
+          <div class="answers-review-panel" id="answersReviewPanel" style="display: none;">
+              <!-- La revisión detallada se mostrará aquí -->
+          </div>
+
+      </div>
+
+  </div>
     <!-- ⚠️ IMPORTANTE: CARGAR tema1-week1-examenes.js PRIMERO -->
     <script src="../../js/respuestas/tema1-week1-examenes.js"></script>
     <!-- Y DESPUÉS exam-engine.js -->
     <script src="../../js/exam-engine.js"></script>
 </body>
 </html>
-
