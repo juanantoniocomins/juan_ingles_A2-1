@@ -55,7 +55,6 @@ El enfoque combina **simplicidad visual, estructura limpia y usabilidad**, hacie
 ---
 
 ## 👤 Autor
-
 **Juan Antonio Comins**  
 💻 Técnico Superior en Informática y Telecomunicaciones  
 📚 Desarrollador web apasionado por la programación, la IA y la enseñanza digital.  
