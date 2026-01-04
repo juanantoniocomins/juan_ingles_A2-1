@@ -61,8 +61,5 @@ Ampliar vocabulario y estructuras para hablar de ti y de otras personas, practic
 ## 👤 Autor
 
 **Juan Antonio Comins**  
-💻 Técnico Superior en Informática y Telecomunicaciones  
-📚 Desarrollador web apasionado por la programación, la IA y la enseñanza digital.  
-📧 [juanantoniocomins@gmail.com](mailto:juanantoniocomins@gmail.com)  
-🌐 [GitHub - juanantoniocomins](https://github.com/juanantoniocomins)
+
 
