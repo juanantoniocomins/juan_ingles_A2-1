@@ -37,29 +37,4 @@ Cada semana incluye cuatro páginas principales para facilitar el aprendizaje:
 - Identificar los **números del 0 al 12** y las **vocales** en inglés.  
 - Utilizar expresiones comunes de **saludo y despedida**.
 
----
-
-## 💬 Ejemplo práctico
-
-> 👋 “Hello! My name is Juan. I’m from Spain. I’m a student. Nice to meet you!”
-
-Este ejemplo muestra cómo usar los pronombres personales, el verbo *TO BE* y las frases básicas de presentación.
-
----
-
-## 🧭 Futuras mejoras
-
-- 🔹 Añadir tarjetas interactivas para practicar los saludos.  
-- 🔹 Incluir ejercicios de pronunciación con audio.  
-- 🔹 Incorporar actividades de escritura con corrección automática.  
-
----
-
-## 👤 Autor
-
-**Juan Antonio Comins**  
-💻 Técnico Superior en Informática y Telecomunicaciones  
-📚 Desarrollador web apasionado por la programación, la IA y la enseñanza digital.  
-📧 [juanantoniocomins@gmail.com](mailto:juanantoniocomins@gmail.com)  
-🌐 [GitHub - juanantoniocomins](https://github.com/juanantoniocomins)
 
