@@ -2984,43 +2984,7 @@
   </div><!-- Cierra .content -->
 </div><!-- Cierra .container -->
 
-<!-- Botón para completar teoría -->
-<div style="margin: 3rem auto; padding: 2rem; text-align: center; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 12px; border: 2px solid #3b82f6; max-width: 700px;">
-  <button id="complete-theory-btn" style="padding: 1.25rem 3rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 10px; font-size: 1.2rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4); transition: all 0.3s ease;">
-    ✅ He terminado esta lección
-  </button>
-  <div id="complete-theory-message" style="display: none; margin-top: 1.5rem; padding: 1rem; background: rgba(16, 185, 129, 0.1); border-radius: 8px; color: #059669; font-weight: 600; font-size: 1rem;"></div>
-</div>
 
-<script>
-  const path = window.location.pathname;
-  const temaMatch = path.match(/tema(\d+)/);
-  const weekMatch = path.match(/week(\d+)/);
-
-  if (temaMatch && weekMatch) {
-    const tema = temaMatch[1];
-    const week = weekMatch[1];
-    const btn = document.getElementById('complete-theory-btn');
-    const msg = document.getElementById('complete-theory-message');
-    
-    const progress = new ProgressSystem();
-    
-    if (progress.isCompleted('teoria', tema, week)) {
-      btn.innerHTML = '✅ Ya completada';
-      btn.disabled = true;
-      btn.style.opacity = '0.6';
-    } else {
-      btn.onclick = () => {
-        progress.markTheoryComplete(tema, week);
-        btn.innerHTML = '✅ ¡Completada!';
-        btn.disabled = true;
-        msg.style.display = 'block';
-        msg.textContent = '🎉 ¡Genial! Teoría registrada. Redirigiendo al inicio...';
-        setTimeout(() => window.location.href = '../../index.html', 1500);
-      };
-    }
-  }
-</script>
 <script src="../../js/contenidos-data.js"></script>
 <script src="../../js/progress-system.js"></script>
 <script src="../../js/teoria.js"></script>
