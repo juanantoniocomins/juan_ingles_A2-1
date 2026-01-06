@@ -2832,4 +2832,3 @@ window.obtenerPreguntasAleatorias = function(cantidad = 20) {
 
 console.log(`✅ Banco de preguntas cargado: ${window.bancoPreguntasExamen.length} preguntas`);
 
-
