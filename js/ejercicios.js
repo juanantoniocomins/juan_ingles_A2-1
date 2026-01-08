@@ -355,13 +355,12 @@ document.addEventListener('DOMContentLoaded', function() { //Es completamente es
 });
 
 // ============================================================
-// FLASHCARDS - VOZ EN INGLÉS UK (SISTEMA DEL NAVEGADOR)
+// FLASHCARDS - VOZ BRITÁNICA CON WEB SPEECH API
 // ============================================================
-// FLASHCARDS - SISTEMA UNIFICADO (con y sin audio)
-// ============================================================
-// Detecta automáticamente si las flashcards tienen audio o solo volteo
-// - Con data-audio="true" + data-speak → Reproduce MP3
-// - Sin data-audio o data-audio="false" → Solo voltea
+// Detecta automáticamente el tipo de audio:
+// - data-audio="true" + data-speak → Usa síntesis de voz británica
+// - data-audio="mp3" + data-speak → Reproduce archivos MP3
+// - Sin data-audio → Solo voltea
 // ============================================================
 function initFlashcardsWithVoice() {
   const flashcards = document.querySelectorAll('.flashcard');
@@ -371,12 +370,14 @@ function initFlashcardsWithVoice() {
     return;
   }
   
-  // Separar flashcards con y sin audio
-  const flashcardsConAudio = document.querySelectorAll('.flashcard[data-audio="true"]');
-  const flashcardsSinAudio = document.querySelectorAll('.flashcard:not([data-audio="true"])');
+  // Separar flashcards por tipo
+  const flashcardsConVoz = document.querySelectorAll('.flashcard[data-audio="true"]');
+  const flashcardsConMP3 = document.querySelectorAll('.flashcard[data-audio="mp3"]');
+  const flashcardsSinAudio = document.querySelectorAll('.flashcard:not([data-audio])');
   
   console.log(`🃏 Flashcards encontradas: ${flashcards.length}`);
-  console.log(`   - Con audio: ${flashcardsConAudio.length}`);
+  console.log(`   - Con síntesis de voz: ${flashcardsConVoz.length}`);
+  console.log(`   - Con archivos MP3: ${flashcardsConMP3.length}`);
   console.log(`   - Sin audio: ${flashcardsSinAudio.length}`);
   
   // ============================================================
@@ -398,73 +399,190 @@ function initFlashcardsWithVoice() {
   }
   
   // ============================================================
-  // PARTE 2: FLASHCARDS CON AUDIO (voltean + reproducen MP3)
+  // PARTE 2: FLASHCARDS CON SÍNTESIS DE VOZ (Web Speech API)
   // ============================================================
-  if (flashcardsConAudio.length === 0) {
-    console.log('ℹ️ No hay flashcards con audio en esta página');
-    return;
+  if (flashcardsConVoz.length > 0) {
+    // Verificar si el navegador soporta síntesis de voz
+    if (!('speechSynthesis' in window)) {
+      console.warn('⚠️ Este navegador no soporta síntesis de voz');
+      // Hacer que funcionen solo con volteo
+      flashcardsConVoz.forEach(card => {
+        card.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const inner = this.querySelector('.flashcard-inner');
+          if (inner) inner.classList.toggle('flipped');
+        });
+      });
+      return;
+    }
+    
+    // Variable para almacenar la voz británica
+    let britishVoice = null;
+    
+    // Función para encontrar voz británica
+    function findBritishVoice() {
+      const voices = speechSynthesis.getVoices();
+      
+      // Prioridad de búsqueda de voces británicas
+      const preferredVoices = [
+        'Google UK English Female',
+        'Google UK English Male',
+        'Microsoft Hazel - English (United Kingdom)',
+        'Microsoft Susan - English (United Kingdom)',
+        'Microsoft George - English (United Kingdom)',
+        'Daniel (Enhanced)', // macOS UK
+        'Kate', // macOS UK
+        'Serena' // macOS UK
+      ];
+      
+      // Intentar encontrar una voz preferida
+      for (const preferred of preferredVoices) {
+        const voice = voices.find(v => v.name === preferred);
+        if (voice) return voice;
+      }
+      
+      // Si no encuentra ninguna preferida, buscar cualquier voz UK
+      const ukVoice = voices.find(v => 
+        v.lang === 'en-GB' || 
+        v.lang.startsWith('en-GB') ||
+        v.name.toLowerCase().includes('uk') ||
+        v.name.toLowerCase().includes('british')
+      );
+      
+      if (ukVoice) return ukVoice;
+      
+      // Como último recurso, usar la primera voz en inglés disponible
+      const englishVoice = voices.find(v => v.lang.startsWith('en'));
+      
+      return englishVoice || voices[0];
+    }
+    
+    // Cargar voces (puede tardar un momento)
+    function loadVoices() {
+      return new Promise((resolve) => {
+        const voices = speechSynthesis.getVoices();
+        if (voices.length > 0) {
+          britishVoice = findBritishVoice();
+          console.log(`🎤 Voz seleccionada: ${britishVoice?.name || 'Predeterminada'} (${britishVoice?.lang || 'sin idioma'})`);
+          resolve();
+        } else {
+          speechSynthesis.onvoiceschanged = () => {
+            britishVoice = findBritishVoice();
+            console.log(`🎤 Voz seleccionada: ${britishVoice?.name || 'Predeterminada'} (${britishVoice?.lang || 'sin idioma'})`);
+            resolve();
+          };
+        }
+      });
+    }
+    
+    // Cargar voces antes de inicializar
+    loadVoices().then(() => {
+      // Agregar evento click a flashcards con síntesis de voz
+      flashcardsConVoz.forEach(card => {
+        card.addEventListener('click', function(e) {
+          e.stopPropagation();
+          
+          // Voltear la tarjeta
+          const inner = this.querySelector('.flashcard-inner');
+          if (inner) {
+            inner.classList.toggle('flipped');
+          }
+          
+          // Leer el texto
+          const textToSpeak = this.getAttribute('data-speak');
+          
+          if (textToSpeak) {
+            // Cancelar cualquier síntesis anterior
+            speechSynthesis.cancel();
+            
+            // Crear nueva síntesis
+            const utterance = new SpeechSynthesisUtterance(textToSpeak);
+            
+            // Configurar la voz británica
+            if (britishVoice) {
+              utterance.voice = britishVoice;
+            }
+            utterance.lang = 'en-GB'; // Inglés británico
+            utterance.rate = 0.9; // Velocidad ligeramente más lenta para claridad
+            utterance.pitch = 1.0; // Tono normal
+            utterance.volume = 1.0; // Volumen máximo
+            
+            // Reproducir
+            speechSynthesis.speak(utterance);
+            
+            console.log(`🔊 Pronunciando: "${textToSpeak}"`);
+          }
+        });
+      });
+      
+      console.log('✅ Flashcards con síntesis de voz británica inicializadas');
+    });
   }
   
-  // Configuración de audio
-  const audioBasePath = '../../audios/t1/alphabet_audio/';
-  const audioCache = {};
-  
-  // Precargar audios de las flashcards con audio
-  const lettersToLoad = new Set();
-  flashcardsConAudio.forEach(card => {
-    const letter = card.getAttribute('data-speak');
-    if (letter) lettersToLoad.add(letter);
-  });
-  
-  console.log(`🎵 Precargando ${lettersToLoad.size} archivos de audio...`);
-  
-  lettersToLoad.forEach(letter => {
-    const audio = new Audio(`${audioBasePath}${letter}.mp3`);
-    audio.preload = 'auto';
-    audioCache[letter] = audio;
+  // ============================================================
+  // PARTE 3: FLASHCARDS CON ARCHIVOS MP3
+  // ============================================================
+  if (flashcardsConMP3.length > 0) {
+    const audioBasePath = '../../audios/t1/alphabet_audio/';
+    const audioCache = {};
     
-    audio.addEventListener('error', function() {
-      console.warn(`⚠️ No se pudo cargar: ${audioBasePath}${letter}.mp3`);
+    // Precargar audios
+    const lettersToLoad = new Set();
+    flashcardsConMP3.forEach(card => {
+      const letter = card.getAttribute('data-speak');
+      if (letter) lettersToLoad.add(letter);
     });
-  });
-  
-  // Agregar evento click a flashcards con audio
-  flashcardsConAudio.forEach(card => {
-    card.addEventListener('click', function(e) {
-      e.stopPropagation();
+    
+    console.log(`🎵 Precargando ${lettersToLoad.size} archivos MP3...`);
+    
+    lettersToLoad.forEach(letter => {
+      const audio = new Audio(`${audioBasePath}${letter}.mp3`);
+      audio.preload = 'auto';
+      audioCache[letter] = audio;
       
-      // Voltear la tarjeta
-      const inner = this.querySelector('.flashcard-inner');
-      if (inner) {
-        inner.classList.toggle('flipped');
-      }
-      
-      // Reproducir audio
-      const letter = this.getAttribute('data-speak');
-      
-      if (letter && audioCache[letter]) {
-        // Detener todos los audios anteriores
-        Object.values(audioCache).forEach(audio => {
-          audio.pause();
-          audio.currentTime = 0;
-        });
+      audio.addEventListener('error', function() {
+        console.warn(`⚠️ No se pudo cargar: ${audioBasePath}${letter}.mp3`);
+      });
+    });
+    
+    // Agregar evento click a flashcards con MP3
+    flashcardsConMP3.forEach(card => {
+      card.addEventListener('click', function(e) {
+        e.stopPropagation();
         
-        // Reproducir el audio
-        const audio = audioCache[letter];
-        audio.currentTime = 0;
+        // Voltear la tarjeta
+        const inner = this.querySelector('.flashcard-inner');
+        if (inner) {
+          inner.classList.toggle('flipped');
+        }
         
-        audio.play()
-          .then(() => {
-            console.log(`🔊 Reproduciendo: ${letter}.mp3`);
-          })
-          .catch(err => {
-            console.error(`❌ Error al reproducir ${letter}:`, err);
+        // Reproducir audio MP3
+        const letter = this.getAttribute('data-speak');
+        
+        if (letter && audioCache[letter]) {
+          // Detener todos los audios anteriores
+          Object.values(audioCache).forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
           });
-      }
+          
+          // Reproducir el audio
+          const audio = audioCache[letter];
+          audio.currentTime = 0;
+          
+          audio.play()
+            .then(() => {
+              console.log(`🔊 Reproduciendo MP3: ${letter}.mp3`);
+            })
+            .catch(err => {
+              console.error(`❌ Error al reproducir ${letter}:`, err);
+            });
+        }
+      });
     });
-  });
-  
-  console.log('✅ Flashcards con audio MP3 inicializadas');
+    
+    console.log('✅ Flashcards con archivos MP3 inicializadas');
+  }
 }
 
 // Exportar para uso en otros archivos si es necesario
