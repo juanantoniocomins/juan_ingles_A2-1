@@ -10,6 +10,9 @@ let tiempoInicio = null;
 let tiempoFin = null;
 let intervaloTemporizador = null;
 let examenEnviado = false;
+let tiempoAcumulado = 0; // Tiempo acumulado en segundos cuando está pausado
+let temporizadorPausado = false;
+let ultimoPausaTime = null;
 
 // ============================================
 // INICIALIZACIÓN
@@ -18,33 +21,62 @@ let examenEnviado = false;
 document.addEventListener('DOMContentLoaded', function() {
     console.log('📚 DOM cargado, inicializando sistema...');
     
-    const startBtn = document.getElementById('startExamBtn');
-    const submitBtn = document.getElementById('submitExamBtn');
-    const retryBtn = document.getElementById('retryExamBtn');
-    
-    if (!startBtn || !submitBtn || !retryBtn) {
-        console.error('❌ No se encontraron los botones necesarios');
-        return;
-    }
-    
-    startBtn.addEventListener('click', iniciarExamen);
-    submitBtn.addEventListener('click', enviarExamen);
-    retryBtn.addEventListener('click', reiniciarExamen);
-    
-    // Verificar que el banco de preguntas esté cargado
-    if (typeof window.bancoPreguntasExamen === 'undefined') {
-        console.error('❌ El banco de preguntas no está cargado');
-        alert('Error: No se pudo cargar el banco de preguntas. Por favor, recarga la página.');
-        return;
-    }
-    
-    if (typeof window.obtenerPreguntasAleatorias !== 'function') {
-        console.error('❌ La función obtenerPreguntasAleatorias no está definida');
-        alert('Error: No se pudo cargar la función de preguntas. Por favor, recarga la página.');
-        return;
-    }
-    
-    console.log('✅ Sistema de exámenes inicializado correctamente');
+    // Dar un pequeño margen para que los scripts terminen de ejecutarse
+    setTimeout(() => {
+        const startBtn = document.getElementById('startExamBtn');
+        const submitBtn = document.getElementById('submitExamBtn');
+        const retryBtn = document.getElementById('retryExamBtn');
+        
+        if (!startBtn || !submitBtn || !retryBtn) {
+            console.error('❌ No se encontraron los botones necesarios');
+            return;
+        }
+        
+        startBtn.addEventListener('click', iniciarExamen);
+        submitBtn.addEventListener('click', enviarExamen);
+        retryBtn.addEventListener('click', reiniciarExamen);
+        
+        // Verificar que el banco de preguntas esté cargado
+        if (typeof window.bancoPreguntasExamen === 'undefined') {
+            console.warn('⚠️ El banco de preguntas no está cargado aún');
+            console.log('⏳ Esperando a que el banco de preguntas se cargue...');
+            
+            // Intentar esperar un poco más
+            let intentos = 0;
+            const maxIntentos = 10;
+            const intervalo = setInterval(() => {
+                intentos++;
+                if (typeof window.bancoPreguntasExamen !== 'undefined') {
+                    console.log('✅ Banco de preguntas cargado correctamente');
+                    console.log(`✅ ${window.bancoPreguntasExamen.length} preguntas disponibles`);
+                    clearInterval(intervalo);
+                } else if (intentos >= maxIntentos) {
+                    console.error('❌ El banco de preguntas no se cargó después de esperar');
+                    clearInterval(intervalo);
+                    // Mostrar mensaje al usuario
+                    if (startBtn) {
+                        startBtn.innerHTML = '⚠️ Error: Recarga la página';
+                        startBtn.style.backgroundColor = '#ef4444';
+                        startBtn.disabled = true;
+                    }
+                }
+            }, 100);
+            return;
+        }
+        
+        if (typeof window.obtenerPreguntasAleatorias !== 'function') {
+            console.error('❌ La función obtenerPreguntasAleatorias no está definida');
+            if (startBtn) {
+                startBtn.innerHTML = '⚠️ Error: Recarga la página';
+                startBtn.style.backgroundColor = '#ef4444';
+                startBtn.disabled = true;
+            }
+            return;
+        }
+        
+        console.log('✅ Sistema de exámenes inicializado correctamente');
+        console.log(`✅ Banco de preguntas cargado: ${window.bancoPreguntasExamen.length} preguntas`);
+    }, 50); // Pequeño delay para asegurar que todos los scripts se han ejecutado
 });
 
 // ============================================
@@ -170,6 +202,45 @@ document.addEventListener('keydown', (e) => {
 function iniciarExamen() {
     console.log('🚀 Iniciando examen...');
     
+    // VALIDACIÓN CRÍTICA: Verificar que el banco de preguntas está cargado
+    if (typeof window.bancoPreguntasExamen === 'undefined' || !window.bancoPreguntasExamen) {
+        console.error('❌ ERROR: El banco de preguntas no está cargado');
+        mostrarNotificacion({
+            icono: '❌',
+            titulo: 'Error al cargar el examen',
+            mensaje: 'El banco de preguntas no está disponible. Por favor, recarga la página.',
+            tipo: 'warning',
+            duracion: 5000
+        });
+        return; // Detener ejecución
+    }
+    
+    if (window.bancoPreguntasExamen.length === 0) {
+        console.error('❌ ERROR: El banco de preguntas está vacío');
+        mostrarNotificacion({
+            icono: '❌',
+            titulo: 'Error',
+            mensaje: 'No hay preguntas disponibles en el banco.',
+            tipo: 'warning',
+            duracion: 5000
+        });
+        return;
+    }
+    
+    if (typeof window.obtenerPreguntasAleatorias !== 'function') {
+        console.error('❌ ERROR: La función obtenerPreguntasAleatorias no está definida');
+        mostrarNotificacion({
+            icono: '❌',
+            titulo: 'Error al cargar el examen',
+            mensaje: 'Funciones del examen no disponibles. Por favor, recarga la página.',
+            tipo: 'warning',
+            duracion: 5000
+        });
+        return;
+    }
+    
+    console.log(`✅ Banco de preguntas cargado: ${window.bancoPreguntasExamen.length} preguntas`);
+    
     // Mostrar notificación
     mostrarNotificacion({
         icono: '🚀',
@@ -184,16 +255,52 @@ function iniciarExamen() {
     tiempoInicio = new Date();
     tiempoFin = null;
     examenEnviado = false;
+    tiempoAcumulado = 0;
+    temporizadorPausado = false;
+    ultimoPausaTime = null;
     
     // Ocultar botón de inicio
     document.getElementById('startExamBtn').style.display = 'none';
     
     // Obtener 20 preguntas aleatorias
-    preguntasActuales = window.obtenerPreguntasAleatorias();
-    console.log('📋 Preguntas seleccionadas:', preguntasActuales.length);
+    try {
+        preguntasActuales = window.obtenerPreguntasAleatorias();
+        console.log('📋 Preguntas seleccionadas:', preguntasActuales.length);
+        
+        // Validar que se obtuvieron preguntas
+        if (!preguntasActuales || preguntasActuales.length === 0) {
+            throw new Error('No se obtuvieron preguntas');
+        }
+    } catch (error) {
+        console.error('❌ ERROR al obtener preguntas:', error);
+        mostrarNotificacion({
+            icono: '❌',
+            titulo: 'Error',
+            mensaje: 'No se pudieron cargar las preguntas. Por favor, recarga la página.',
+            tipo: 'warning',
+            duracion: 5000
+        });
+        // Mostrar de nuevo el botón de inicio
+        document.getElementById('startExamBtn').style.display = 'inline-block';
+        return;
+    }
     
     // Generar HTML de preguntas
-    generarPreguntasHTML();
+    try {
+        generarPreguntasHTML();
+    } catch (error) {
+        console.error('❌ ERROR al generar HTML de preguntas:', error);
+        mostrarNotificacion({
+            icono: '❌',
+            titulo: 'Error',
+            mensaje: 'Error al generar las preguntas. Por favor, recarga la página.',
+            tipo: 'warning',
+            duracion: 5000
+        });
+        // Mostrar de nuevo el botón de inicio
+        document.getElementById('startExamBtn').style.display = 'inline-block';
+        return;
+    }
     
     // Mostrar contenedor de preguntas
     document.getElementById('examQuestionsContainer').style.display = 'block';
@@ -201,6 +308,12 @@ function iniciarExamen() {
     
     // Iniciar temporizador
     iniciarTemporizador();
+    
+    // Mostrar botones de control del temporizador
+    const pauseBtn = document.getElementById('timerPauseBtn');
+    const resetBtn = document.getElementById('timerResetBtn');
+    if (pauseBtn) pauseBtn.style.display = 'flex';
+    if (resetBtn) resetBtn.style.display = 'flex';
     
     // Scroll suave al inicio de las preguntas
     setTimeout(() => {
@@ -220,6 +333,23 @@ function generarPreguntasHTML() {
         const preguntaDiv = document.createElement('div');
         preguntaDiv.className = 'ejercicio-box exam-question';
         preguntaDiv.id = `pregunta-${pregunta.id}`;
+        
+        // Añadir clase específica según el tipo para los colores
+        const tipoClases = {
+            'text': 'tipo-text',
+            'radio': 'tipo-radio',
+            'checkbox': 'tipo-checkbox',
+            'select': 'tipo-select',
+            'audio': 'tipo-audio',
+            'true-false': 'tipo-truefalse',
+            'fill-blanks': 'tipo-fillblanks',
+            'matching': 'tipo-matching',
+            'sentence-ordering': 'tipo-ordering'
+        };
+        
+        if (tipoClases[pregunta.tipo]) {
+            preguntaDiv.classList.add(tipoClases[pregunta.tipo]);
+        }
         
         let contenidoHTML = `
             <div class="ejercicio-header">
@@ -258,6 +388,9 @@ function generarPreguntasHTML() {
             case 'sentence-ordering':
                 contenidoHTML += generarSentenceOrdering(pregunta);
                 break;
+            case 'audio-multiple':
+                contenidoHTML += generarAudioMultiple(pregunta);
+                break;
         }
         
         preguntaDiv.innerHTML = contenidoHTML;
@@ -272,8 +405,26 @@ function generarPreguntasHTML() {
 // GENERADORES DE TIPOS DE PREGUNTA
 // ============================================
 
+// Función auxiliar para agregar reproductor de audio si existe
+function agregarReproductorAudio(pregunta) {
+    if (!pregunta.audioSrc) return '';
+    
+    return `
+        <div class="multimedia-box audio-player">
+            <p>🎧 <strong>Escucha el audio:</strong></p>
+            <audio controls style="width: 100%;">
+                <source src="${pregunta.audioSrc}" type="audio/mpeg">
+                <source src="${pregunta.audioSrc}" type="audio/wav">
+                <source src="${pregunta.audioSrc}" type="audio/ogg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+    `;
+}
+
 function generarInputTexto(pregunta) {
     return `
+        ${agregarReproductorAudio(pregunta)}
         <div class="answer-input-group">
             <input 
                 type="text" 
@@ -286,7 +437,9 @@ function generarInputTexto(pregunta) {
 }
 
 function generarRadioButtons(pregunta) {
-    let html = '<div class="answer-options">';
+    let html = agregarReproductorAudio(pregunta);
+    
+    html += '<div class="answer-options">';
     
     pregunta.opciones.forEach(opcion => {
         html += `
@@ -307,7 +460,9 @@ function generarRadioButtons(pregunta) {
 }
 
 function generarCheckboxes(pregunta) {
-    let html = '<div class="answer-options">';
+    let html = agregarReproductorAudio(pregunta);
+    
+    html += '<div class="answer-options">';
     
     pregunta.opciones.forEach(opcion => {
         html += `
@@ -328,7 +483,9 @@ function generarCheckboxes(pregunta) {
 }
 
 function generarSelect(pregunta) {
-    let html = `
+    let html = agregarReproductorAudio(pregunta);
+    
+    html += `
         <div class="answer-select-group">
             <select id="respuesta-${pregunta.id}" class="exam-select">
                 <option value="">-- Selecciona una opción --</option>
@@ -346,22 +503,49 @@ function generarSelect(pregunta) {
 }
 
 function generarAudioPregunta(pregunta) {
-    let html = `
-        <div class="multimedia-box audio-player">
-            <p>🎧 <strong>Escucha el audio y responde:</strong></p>
-            <audio controls>
-                <source src="${pregunta.audioSrc}" type="audio/mpeg">
-                Tu navegador no soporta audio.
-            </audio>
-        </div>
-    `;
+    let html = agregarReproductorAudio(pregunta);
     
-    // Si tiene opciones (radio), generarlas
+    // Si no hay audio, mostrar mensaje de advertencia
+    if (!pregunta.audioSrc) {
+        html = `
+            <div class="multimedia-box audio-player" style="background: #fef3c7; border-left-color: #f59e0b;">
+                <p>🎧 <strong>Audio:</strong> <em>No disponible en este momento</em></p>
+                <p style="margin-top: 0.5rem; color: #92400e; font-size: 0.9rem;">
+                    💡 Responde basándote en el texto de la pregunta.
+                </p>
+            </div>
+        `;
+    }
+    
+    // Si tiene opciones (radio), generarlas SIN el reproductor (ya lo agregamos arriba)
     if (pregunta.opciones) {
-        html += generarRadioButtons(pregunta);
+        html += '<div class="answer-options">';
+        pregunta.opciones.forEach(opcion => {
+            html += `
+                <label class="option-label">
+                    <input 
+                        type="radio" 
+                        name="pregunta-${pregunta.id}" 
+                        value="${opcion.valor}"
+                        id="pregunta-${pregunta.id}-${opcion.valor}"
+                    >
+                    <span>${opcion.texto}</span>
+                </label>
+            `;
+        });
+        html += '</div>';
     } else {
-        // Si es texto libre
-        html += generarInputTexto(pregunta);
+        // Si es texto libre, generar input SIN el reproductor (ya lo agregamos arriba)
+        html += `
+            <div class="answer-input-group">
+                <input 
+                    type="text" 
+                    id="respuesta-${pregunta.id}" 
+                    class="exam-text-input"
+                    placeholder="Escribe tu respuesta aquí..."
+                >
+            </div>
+        `;
     }
     
     return html;
@@ -397,7 +581,8 @@ function generarTrueFalse(pregunta) {
 }
 
 function generarFillBlanks(pregunta) {
-    const numBlanks = pregunta.blanks.length;
+    // Retrocompatibilidad: soportar tanto 'blanks' (week2) como 'espacios' (week3)
+    const numBlanks = pregunta.espacios ? pregunta.espacios.length : pregunta.blanks.length;
     let html = '<div class="fill-blanks-container">';
     
     for (let i = 0; i < numBlanks; i++) {
@@ -420,21 +605,34 @@ function generarFillBlanks(pregunta) {
 }
 
 function generarMatching(pregunta) {
+    // RETROCOMPATIBILIDAD: Soportar 'parejas' (week1) y 'pares' (week3)
+    const lista = pregunta.pares || pregunta.parejas;
+    
+    if (!lista || lista.length === 0) {
+        console.error('❌ ERROR: Pregunta matching sin pares/parejas', pregunta);
+        return '<div class="error">Error: Pregunta sin opciones</div>';
+    }
+    
+    // Extraer todas las opciones del lado derecho y mezclarlas
+    const opcionesDerechas = lista.map(par => par.derecha);
+    const opcionesMezcladas = [...opcionesDerechas].sort(() => Math.random() - 0.5);
+    
     let html = '<div class="matching-container">';
     
-    pregunta.parejas.forEach(pareja => {
+    lista.forEach((par, index) => {
         html += `
             <div class="matching-row">
                 <div class="matching-left">
-                    ${pareja.izquierda}
+                    ${par.izquierda}
                 </div>
                 <div class="matching-right">
                     <select 
                         class="exam-select" 
-                        id="respuesta-${pregunta.id}-${pareja.id}"
+                        id="respuesta-${pregunta.id}-par-${index}"
+                        data-par-index="${index}"
                     >
                         <option value="">-- Select --</option>
-                        ${pareja.opciones.map(op => 
+                        ${opcionesMezcladas.map(op => 
                             `<option value="${op}">${op}</option>`
                         ).join('')}
                     </select>
@@ -480,6 +678,83 @@ function generarSentenceOrdering(pregunta) {
 }
 
 // ============================================
+// NUEVO: GENERADOR AUDIO-MULTIPLE
+// ============================================
+
+function generarAudioMultiple(pregunta) {
+    let html = `
+        <div class="multimedia-box audio-player">
+            <p>🎧 <strong>Listen to the audio and answer ALL the questions below:</strong></p>
+            <audio controls>
+                <source src="${pregunta.audioSrc}" type="audio/mpeg">
+                Tu navegador no soporta audio.
+            </audio>
+        </div>
+        
+        <div class="audio-multiple-questions">
+    `;
+    
+    pregunta.subpreguntas.forEach((subpregunta, index) => {
+        html += `
+            <div class="sub-question-box">
+                <h4 class="sub-question-title">❓ Question ${index + 1}:</h4>
+                <p class="sub-question-text"><strong>${subpregunta.pregunta}</strong></p>
+        `;
+        
+        if (subpregunta.tipo === 'radio') {
+            html += '<div class="answer-options">';
+            subpregunta.opciones.forEach(opcion => {
+                html += `
+                    <label class="option-label">
+                        <input 
+                            type="radio" 
+                            name="pregunta-${pregunta.id}-sub-${subpregunta.id}" 
+                            value="${opcion.valor}"
+                            id="pregunta-${pregunta.id}-sub-${subpregunta.id}-${opcion.valor}"
+                        >
+                        <span>${opcion.texto}</span>
+                    </label>
+                `;
+            });
+            html += '</div>';
+        } else if (subpregunta.tipo === 'text') {
+            html += `
+                <div class="answer-input-group">
+                    <input 
+                        type="text" 
+                        id="respuesta-${pregunta.id}-sub-${subpregunta.id}" 
+                        class="exam-text-input"
+                        placeholder="Write your answer here..."
+                    >
+                </div>
+            `;
+        } else if (subpregunta.tipo === 'checkbox') {
+            html += '<div class="answer-options">';
+            subpregunta.opciones.forEach(opcion => {
+                html += `
+                    <label class="option-label">
+                        <input 
+                            type="checkbox" 
+                            name="pregunta-${pregunta.id}-sub-${subpregunta.id}" 
+                            value="${opcion.valor}"
+                            id="pregunta-${pregunta.id}-sub-${subpregunta.id}-${opcion.valor}"
+                        >
+                        <span>${opcion.texto}</span>
+                    </label>
+                `;
+            });
+            html += '</div>';
+        }
+        
+        html += '</div>';
+    });
+    
+    html += '</div>';
+    
+    return html;
+}
+
+// ============================================
 // EVENT LISTENERS PARA GUARDAR RESPUESTAS
 // ============================================
 
@@ -519,7 +794,9 @@ function agregarEventListeners(pregunta) {
             }
         } else if (pregunta.tipo === 'fill-blanks') {
             const blanks = [];
-            for (let i = 0; i < pregunta.blanks.length; i++) {
+            // Retrocompatibilidad: soportar tanto 'blanks' como 'espacios'
+            const numBlanks = pregunta.espacios ? pregunta.espacios.length : pregunta.blanks.length;
+            for (let i = 0; i < numBlanks; i++) {
                 const input = document.getElementById(`respuesta-${pregunta.id}-blank-${i}`);
                 if (input) {
                     input.addEventListener('input', () => {
@@ -529,13 +806,53 @@ function agregarEventListeners(pregunta) {
                 }
             }
         } else if (pregunta.tipo === 'matching') {
+            // RETROCOMPATIBILIDAD: Soportar 'parejas' (week1) y 'pares' (week3)
+            const lista = pregunta.pares || pregunta.parejas;
             const respuestas = {};
-            pregunta.parejas.forEach(pareja => {
-                const select = document.getElementById(`respuesta-${pregunta.id}-${pareja.id}`);
+            lista.forEach((par, index) => {
+                const select = document.getElementById(`respuesta-${pregunta.id}-par-${index}`);
                 if (select) {
                     select.addEventListener('change', () => {
-                        respuestas[pareja.id] = select.value;
+                        respuestas[index] = select.value;
                         respuestasUsuario[pregunta.id] = respuestas;
+                    });
+                }
+            });
+        } else if (pregunta.tipo === 'audio-multiple') {
+            pregunta.subpreguntas.forEach(subpregunta => {
+                if (subpregunta.tipo === 'radio') {
+                    const radios = document.getElementsByName(`pregunta-${pregunta.id}-sub-${subpregunta.id}`);
+                    radios.forEach(radio => {
+                        radio.addEventListener('change', () => {
+                            if (!respuestasUsuario[pregunta.id]) {
+                                respuestasUsuario[pregunta.id] = {};
+                            }
+                            respuestasUsuario[pregunta.id][subpregunta.id] = radio.value;
+                        });
+                    });
+                } else if (subpregunta.tipo === 'text') {
+                    const input = document.getElementById(`respuesta-${pregunta.id}-sub-${subpregunta.id}`);
+                    if (input) {
+                        input.addEventListener('input', () => {
+                            if (!respuestasUsuario[pregunta.id]) {
+                                respuestasUsuario[pregunta.id] = {};
+                            }
+                            respuestasUsuario[pregunta.id][subpregunta.id] = input.value.trim().toLowerCase();
+                        });
+                    }
+                } else if (subpregunta.tipo === 'checkbox') {
+                    const checkboxes = document.getElementsByName(`pregunta-${pregunta.id}-sub-${subpregunta.id}`);
+                    checkboxes.forEach(checkbox => {
+                        checkbox.addEventListener('change', () => {
+                            if (!respuestasUsuario[pregunta.id]) {
+                                respuestasUsuario[pregunta.id] = {};
+                            }
+                            const seleccionados = [];
+                            checkboxes.forEach(cb => {
+                                if (cb.checked) seleccionados.push(cb.value);
+                            });
+                            respuestasUsuario[pregunta.id][subpregunta.id] = seleccionados;
+                        });
                     });
                 }
             });
@@ -554,16 +871,38 @@ function iniciarTemporizador() {
 }
 
 function actualizarTemporizador() {
-    if (!tiempoInicio) return;
+    if (!tiempoInicio || temporizadorPausado) return;
     
     const ahora = new Date();
-    const diferencia = Math.floor((ahora - tiempoInicio) / 1000);
+    const diferencia = Math.floor((ahora - tiempoInicio) / 1000) + tiempoAcumulado;
     
     const minutos = Math.floor(diferencia / 60);
     const segundos = diferencia % 60;
     
     const display = `${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
-    document.getElementById('examTimer').textContent = display;
+    
+    // Buscar en el nuevo diseño de badge
+    let timerElement = document.querySelector('.timer-value-badge');
+    
+    // Fallback al diseño antiguo por compatibilidad
+    if (!timerElement) {
+        timerElement = document.querySelector('#examTimer .timer-value-compact');
+    }
+    
+    if (timerElement) {
+        timerElement.textContent = display;
+    }
+    
+    // Advertencias de tiempo
+    const timerBadge = document.querySelector('.timer-badge-new') || document.getElementById('examTimer');
+    if (timerBadge) {
+        timerBadge.classList.remove('warning', 'critical');
+        if (minutos >= 15) {
+            timerBadge.classList.add('critical');
+        } else if (minutos >= 10) {
+            timerBadge.classList.add('warning');
+        }
+    }
 }
 
 function detenerTemporizador() {
@@ -571,7 +910,117 @@ function detenerTemporizador() {
         clearInterval(intervaloTemporizador);
         intervaloTemporizador = null;
     }
+    temporizadorPausado = false;
+    tiempoAcumulado = 0;
 }
+
+// ============================================
+// FUNCIONES DE CONTROL DEL TEMPORIZADOR
+// ============================================
+
+function pausarTemporizador() {
+    if (temporizadorPausado || !tiempoInicio) return;
+    
+    temporizadorPausado = true;
+    ultimoPausaTime = new Date();
+    
+    // Calcular tiempo acumulado hasta ahora
+    const ahora = new Date();
+    tiempoAcumulado += Math.floor((ahora - tiempoInicio) / 1000);
+    
+    // Actualizar UI
+    const pauseBtn = document.getElementById('timerPauseBtn');
+    const playBtn = document.getElementById('timerPlayBtn');
+    if (pauseBtn) pauseBtn.style.display = 'none';
+    if (playBtn) {
+        playBtn.style.display = 'flex';
+        playBtn.classList.add('paused');
+    }
+    
+    // Mostrar notificación
+    mostrarNotificacion({
+        icono: '⏸️',
+        titulo: 'Temporizador pausado',
+        mensaje: 'El tiempo se ha detenido',
+        tipo: 'info',
+        duracion: 2000
+    });
+    
+    console.log('⏸️ Temporizador pausado');
+}
+
+function reanudarTemporizador() {
+    if (!temporizadorPausado) return;
+    
+    temporizadorPausado = false;
+    
+    // Reiniciar el tiempo de inicio desde el punto actual
+    tiempoInicio = new Date();
+    
+    // Actualizar UI
+    const pauseBtn = document.getElementById('timerPauseBtn');
+    const playBtn = document.getElementById('timerPlayBtn');
+    if (pauseBtn) pauseBtn.style.display = 'flex';
+    if (playBtn) {
+        playBtn.style.display = 'none';
+        playBtn.classList.remove('paused');
+    }
+    
+    // Mostrar notificación
+    mostrarNotificacion({
+        icono: '▶️',
+        titulo: 'Temporizador reanudado',
+        mensaje: 'El tiempo continúa',
+        tipo: 'success',
+        duracion: 2000
+    });
+    
+    console.log('▶️ Temporizador reanudado');
+}
+
+function resetearTemporizador() {
+    mostrarModal({
+        icono: '🔄',
+        titulo: '¿Reiniciar temporizador?',
+        mensaje: '¿Quieres reiniciar el tiempo a 00:00? Esta acción no se puede deshacer.',
+        botonPrimario: 'Reiniciar',
+        botonSecundario: 'Cancelar',
+        onConfirm: () => {
+            tiempoInicio = new Date();
+            tiempoAcumulado = 0;
+            temporizadorPausado = false;
+            
+            // Actualizar UI
+            actualizarTemporizador();
+            
+            const pauseBtn = document.getElementById('timerPauseBtn');
+            const playBtn = document.getElementById('timerPlayBtn');
+            if (pauseBtn) pauseBtn.style.display = 'flex';
+            if (playBtn) playBtn.style.display = 'none';
+            
+            // Remover advertencias
+            const timerBadge = document.querySelector('.timer-badge-new') || document.getElementById('examTimer');
+            if (timerBadge) {
+                timerBadge.classList.remove('warning', 'critical');
+            }
+            
+            mostrarNotificacion({
+                icono: '🔄',
+                titulo: 'Temporizador reiniciado',
+                mensaje: 'El tiempo ha vuelto a 00:00',
+                tipo: 'success',
+                duracion: 2000
+            });
+            
+            console.log('🔄 Temporizador reiniciado');
+        }
+    });
+}
+
+// Hacer funciones globales para usar en HTML
+window.pausarTemporizador = pausarTemporizador;
+window.reanudarTemporizador = reanudarTemporizador;
+window.resetearTemporizador = resetearTemporizador;
 
 // ============================================
 // FUNCIÓN: ENVIAR EXAMEN
@@ -590,7 +1039,7 @@ function enviarExamen() {
     
     // Mostrar modal de confirmación
     mostrarModal({
-        icono: '📝',
+        icono: '📮',
         titulo: '¿Enviar el examen?',
         mensaje: '¿Estás seguro de que quieres enviar el examen? No podrás modificar tus respuestas después.',
         botonPrimario: 'Enviar',
@@ -646,7 +1095,55 @@ function calcularResultados() {
         let esCorrecta = false;
         let sinResp = false;
         
-        if (!respuestaUsuario || respuestaUsuario === '' || (Array.isArray(respuestaUsuario) && respuestaUsuario.length === 0)) {
+        // NUEVO: Manejo de audio-multiple
+        if (pregunta.tipo === 'audio-multiple') {
+            if (!respuestaUsuario || Object.keys(respuestaUsuario).length === 0) {
+                sinResponder++;
+                sinResp = true;
+            } else {
+                let todasCorrectas = true;
+                let hayRespuestas = false;
+                
+                pregunta.subpreguntas.forEach(sub => {
+                    const respUser = respuestaUsuario[sub.id];
+                    const respCorr = sub.respuestaCorrecta;
+                    
+                    if (!respUser) {
+                        todasCorrectas = false;
+                    } else {
+                        hayRespuestas = true;
+                        if (sub.tipo === 'text') {
+                            const respuestasAceptadas = Array.isArray(respCorr) ? respCorr : [respCorr];
+                            if (!respuestasAceptadas.some(resp => respUser.toLowerCase().includes(resp.toLowerCase()))) {
+                                todasCorrectas = false;
+                            }
+                        } else if (sub.tipo === 'checkbox') {
+                            const respUserArr = Array.isArray(respUser) ? respUser.sort() : [];
+                            const respCorrArr = Array.isArray(respCorr) ? respCorr.sort() : [];
+                            if (JSON.stringify(respUserArr) !== JSON.stringify(respCorrArr)) {
+                                todasCorrectas = false;
+                            }
+                        } else {
+                            if (respUser !== respCorr) {
+                                todasCorrectas = false;
+                            }
+                        }
+                    }
+                });
+                
+                if (!hayRespuestas) {
+                    sinResponder++;
+                    sinResp = true;
+                } else {
+                    esCorrecta = todasCorrectas;
+                    if (esCorrecta) {
+                        correctas++;
+                    } else {
+                        incorrectas++;
+                    }
+                }
+            }
+        } else if (!respuestaUsuario || respuestaUsuario === '' || (Array.isArray(respuestaUsuario) && respuestaUsuario.length === 0)) {
             sinResponder++;
             sinResp = true;
         } else {
@@ -661,13 +1158,40 @@ function calcularResultados() {
                 );
             } else if (pregunta.tipo === 'fill-blanks') {
                 const respUser = Array.isArray(respuestaUsuario) ? respuestaUsuario : [];
-                const respCorr = pregunta.respuestaCorrecta;
-                esCorrecta = respUser.length === respCorr.length && 
-                             respUser.every((r, i) => r.toLowerCase() === respCorr[i].toLowerCase());
+                
+                // Retrocompatibilidad: soportar estructura antigua (blanks) y nueva (espacios)
+                if (pregunta.espacios) {
+                    // Estructura nueva: cada espacio tiene un array de respuestas aceptadas
+                    esCorrecta = respUser.length === pregunta.espacios.length && 
+                                 respUser.every((r, i) => {
+                                     const respuestasAceptadas = pregunta.espacios[i].respuestas.map(resp => resp.toLowerCase());
+                                     return respuestasAceptadas.includes(r.toLowerCase());
+                                 });
+                } else {
+                    // Estructura antigua: array simple de respuestas
+                    esCorrecta = respUser.length === pregunta.blanks.length && 
+                                 respUser.every((r, i) => r.toLowerCase() === pregunta.blanks[i].toLowerCase());
+                }
             } else if (pregunta.tipo === 'matching') {
                 const respUser = respuestaUsuario || {};
-                const respCorr = pregunta.respuestaCorrecta;
-                esCorrecta = Object.keys(respCorr).every(key => respUser[key] === respCorr[key]);
+                
+                // RETROCOMPATIBILIDAD: Soportar ambas estructuras
+                if (pregunta.pares) {
+                    // Estructura nueva (week3): validar contra pares directamente
+                    esCorrecta = pregunta.pares.every((par, index) => {
+                        return respUser[index] === par.derecha;
+                    });
+                } else if (pregunta.parejas && pregunta.respuestaCorrecta) {
+                    // Estructura antigua (week1): validar contra respuestaCorrecta
+                    // Convertir índices a valores de izquierda
+                    esCorrecta = pregunta.parejas.every((pareja, index) => {
+                        const respuestaEsperada = pregunta.respuestaCorrecta[pareja.izquierda];
+                        return respUser[index] === respuestaEsperada;
+                    });
+                } else {
+                    console.error('❌ Estructura matching no reconocida:', pregunta);
+                    esCorrecta = false;
+                }
             } else if (pregunta.tipo === 'sentence-ordering') {
                 const respUser = respuestaUsuario || [];
                 const respCorr = pregunta.respuestaCorrecta;
@@ -691,7 +1215,7 @@ function calcularResultados() {
         });
     });
     
-    const tiempoTotal = Math.floor((tiempoFin - tiempoInicio) / 1000);
+    const tiempoTotal = Math.floor((tiempoFin - tiempoInicio) / 1000) + tiempoAcumulado;
     const porcentaje = Math.round((correctas / preguntasActuales.length) * 100);
     
     return {
@@ -1052,6 +1576,17 @@ function mostrarRevisionDetallada(detalles) {
 function formatearRespuesta(respuesta, pregunta = null) {
     if (!respuesta) return '';
     
+    // Para audio-multiple, formatear cada sub-respuesta
+    if (pregunta && pregunta.tipo === 'audio-multiple' && typeof respuesta === 'object' && !Array.isArray(respuesta)) {
+        let resultado = '<ul>';
+        pregunta.subpreguntas.forEach((sub, index) => {
+            const respUser = respuesta[sub.id] || 'Sin responder';
+            resultado += `<li><strong>Q${index + 1}:</strong> ${respUser}</li>`;
+        });
+        resultado += '</ul>';
+        return resultado;
+    }
+    
     if (Array.isArray(respuesta)) {
         if (pregunta && pregunta.opciones) {
             const textos = respuesta.map(valor => {
@@ -1078,6 +1613,7 @@ function obtenerNombreTipo(tipo) {
         'checkbox': '☑️ Selección múltiple',
         'select': '📋 Lista',
         'audio': '🎧 Listening',
+        'audio-multiple': '🎧 Listening Comprehension',
         'true-false': '✔️ Verdadero/Falso',
         'fill-blanks': '📝 Rellenar espacios',
         'matching': '🔗 Relacionar',
@@ -1110,14 +1646,51 @@ function reiniciarExamen() {
             tiempoInicio = null;
             tiempoFin = null;
             examenEnviado = false;
+            tiempoAcumulado = 0;
+            temporizadorPausado = false;
+            ultimoPausaTime = null;
             
+            // Detener temporizador si está corriendo
+            detenerTemporizador();
+            
+            // Limpiar paneles de resultados
             document.getElementById('resultsPanel').style.display = 'none';
             document.getElementById('resultsPanel').classList.remove('show');
+            document.getElementById('resultsPanel').innerHTML = '';
             document.getElementById('answersReviewPanel').style.display = 'none';
+            document.getElementById('answersReviewPanel').innerHTML = '';
             document.getElementById('retryButtonArea').style.display = 'none';
-            document.getElementById('examQuestionsContainer').style.display = 'none';
+            document.getElementById('submitArea').style.display = 'none';
             
-            document.getElementById('examTimer').textContent = '00:00';
+            // CRÍTICO: Limpiar completamente el contenedor de preguntas
+            const questionsContainer = document.getElementById('examQuestionsContainer');
+            questionsContainer.innerHTML = '';
+            questionsContainer.style.display = 'none';
+            
+            // Resetear temporizador - buscar en nuevo diseño y antiguo
+            let timerElement = document.querySelector('.timer-value-badge');
+            if (!timerElement) {
+                timerElement = document.querySelector('#examTimer .timer-value-compact');
+            }
+            if (timerElement) {
+                timerElement.textContent = '00:00';
+            }
+            
+            // Remover clases de estado del temporizador
+            const examTimer = document.getElementById('examTimer');
+            if (examTimer) {
+                examTimer.classList.remove('warning', 'critical');
+            }
+            
+            // Ocultar botones de control del temporizador
+            const pauseBtn = document.getElementById('timerPauseBtn');
+            const playBtn = document.getElementById('timerPlayBtn');
+            const resetBtn = document.getElementById('timerResetBtn');
+            if (pauseBtn) pauseBtn.style.display = 'none';
+            if (playBtn) playBtn.style.display = 'none';
+            if (resetBtn) resetBtn.style.display = 'none';
+            
+            // Mostrar botón de inicio
             document.getElementById('startExamBtn').style.display = 'inline-block';
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1208,3 +1781,25 @@ function resetearOrden(preguntaId) {
 
 console.log('✅ Motor de exámenes cargado correctamente');
 
+// Verificación adicional cuando TODOS los recursos estén cargados
+window.addEventListener('load', function() {
+    console.log('🔍 Verificando estado de carga completo...');
+    
+    const estado = {
+        bancoPreguntasExiste: typeof window.bancoPreguntasExamen !== 'undefined',
+        numeroPreguntasEnBanco: window.bancoPreguntasExamen ? window.bancoPreguntasExamen.length : 0,
+        funcionObtenerExiste: typeof window.obtenerPreguntasAleatorias === 'function',
+        botonIniciarExiste: !!document.getElementById('startExamBtn'),
+        contenedorPreguntasExiste: !!document.getElementById('examQuestionsContainer')
+    };
+    
+    console.log('📊 Estado del sistema:', estado);
+    
+    if (!estado.bancoPreguntasExiste) {
+        console.error('❌ CRÍTICO: Banco de preguntas NO cargado después de window.load');
+    } else if (estado.numeroPreguntasEnBanco === 0) {
+        console.error('❌ CRÍTICO: Banco de preguntas vacío');
+    } else {
+        console.log(`✅ Todo OK: ${estado.numeroPreguntasEnBanco} preguntas disponibles`);
+    }
+});
