@@ -9,14 +9,14 @@ const CONTENIDOS_DATA = {
     "3": { titulo: "👋 Week 3", puntos: ["The alphabet", "Numbers: 13-29", "Simple present", "Adverbs of frequency", "Talking about other people"] }
   },
   "2": {
-    "1": { titulo: "⏰ Week 1", puntos: ["Rutinas diarias", "Present Simple (afirmativo)", "Vocabulario: horarios"] },
-    "2": { titulo: "⏰ Week 2", puntos: ["Adverbios de frecuencia", "Present Simple (negativo)", "Expresiones de tiempo"] },
-    "3": { titulo: "⏰ Week 3", puntos: ["Preguntas en Present Simple", "Short answers", "Hábitos y frecuencia"] }
+    "1": { titulo: "✈️ Week 1", puntos: ["Demostratives", "Countries and nationalities", "Jobs"] },
+    "2": { titulo: "✈️ Week 2", puntos: ["At the airport", "When does the train arrive?", "Counting numbers"] },
+    "3": { titulo: "✈️ Week 3", puntos: ["Show me the photos", "Two or more", "Describing pictures"] }
   },
   "3": {
-    "1": { titulo: "🍎 Week 1", puntos: ["Vocabulario de comida", "Artículos A/AN/THE", "Ofrecer y pedir comida"] },
-    "2": { titulo: "🍎 Week 2", puntos: ["Countable/Uncountable", "Some/Any/Much/Many", "Medidas y cantidades"] },
-    "3": { titulo: "🍎 Week 3", puntos: ["En el restaurante", "Hacer pedidos", "Cortesía básica"] }
+    "1": { titulo: "👨‍👩‍👧 Week 1", puntos: ["My family", "Have / Has got", "Possessive´s (Saxon Genitive)", "Possessive Adjectives", "Family pictures"] },
+    "2": { titulo: "👨‍👩‍👧 Week 2", puntos: ["Daily routine", "When and how often?", "The life of people", "To practise a bit further"] },
+    "3": { titulo: "👨‍👩‍👧 Week 3", puntos: ["Describing people", "Present Continuous"] }
   },
   "4": {
     "1": { titulo: "👨‍👩‍👧 Week 1", puntos: ["Miembros de la familia", "Relaciones", "Possessive 's"] },
@@ -47,11 +47,11 @@ const CONTENIDOS_DATA = {
 
 const TEMA_NOMBRES = {
   "1": "Introduce Yourself",
-  "2": "Getting To Know Each Other: Who's Who?",
-  "3": "Food & Drinks",
-  "4": "Family & Friends",
-  "5": "Hobbies & Free Time",
-  "6": "Shopping & Money",
-  "7": "Travel & Transport",
-  "8": "Health & Body"
+  "2": "Jobs & Trips",
+  "3": "My Family",
+  "4": "XXXXXXXXXXXXXXXXXXX",
+  "5": "XXXXXXXXXXXXXXXXXXX",
+  "6": "XXXXXXXXXXXXXXXXXXX",
+  "7": "XXXXXXXXXXXXXXXXXXX",
+  "8": "XXXXXXXXXXXXXXXXXXX"
 };
