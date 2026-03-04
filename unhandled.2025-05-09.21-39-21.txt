@@ -1,0 +1,57 @@
+-- Log file for all messages not properly caught --
+
+21:42:06.671   SessionManager::Process() - Warning - Time between calls was 517 ms, time waiting for lock was 2 ms
+21:42:11.238   NetworkManager::DispatchEvents() - Warning - Time between calls was 5749 ms
+21:42:19.372   SessionManager::Process() - Warning - Time between calls was 8140 ms, time waiting for lock was 8129 ms
+21:42:20.415   NetworkManager::DispatchEvents() - Warning - Time between calls was 9178 ms
+21:42:27.366   SessionManager::Process() - Warning - Time between calls was 4709 ms, time waiting for lock was 4698 ms
+21:42:27.458   NetworkManager::DispatchEvents() - Warning - Time between calls was 4801 ms
+21:42:31.024   SessionManager::Process() - Warning - Time between calls was 1203 ms, time waiting for lock was 1192 ms
+21:42:33.232   SessionManager::Process() - Warning - Time between calls was 1053 ms, time waiting for lock was 1043 ms
+21:42:38.776   SessionManager::Process() - Warning - Time between calls was 1195 ms, time waiting for lock was 1184 ms
+21:42:40.835   SessionManager::Process() - Warning - Time between calls was 631 ms, time waiting for lock was 620 ms
+21:42:42.925   SessionManager::Process() - Warning - Time between calls was 607 ms, time waiting for lock was 596 ms
+21:42:52.908   BattleServerRelay::Process - 147 ms between calls!
+21:42:52.910   BattleServerRelay::Process - 444 ms between calls!
+21:42:52.910   BattleServerRelay::Process - 444 ms between calls!
+21:42:52.910   BattleServerRelay::Process - 444 ms between calls!
+21:42:52.910   BattleServerRelay::Process - 444 ms between calls!
+21:42:52.910   BattleServerRelay::Process - 444 ms between calls!
+21:42:52.910   BattleServerRelay::Process - 444 ms between calls!
+21:42:52.910   BattleServerRelay::Process - 444 ms between calls!
+21:42:52.910   BattleServerRelay::Process - 444 ms between calls!
+21:42:52.922   BattleServerRelay::Process - 308 ms between calls!
+21:42:54.125   BattleServerRelay::Process - 689 ms between calls!
+21:42:54.125   BattleServerRelay::Process - 690 ms between calls!
+21:42:54.125   BattleServerRelay::Process - 690 ms between calls!
+21:42:54.125   BattleServerRelay::Process - 690 ms between calls!
+21:42:54.125   BattleServerRelay::Process - 690 ms between calls!
+21:42:54.125   BattleServerRelay::Process - 690 ms between calls!
+21:42:54.125   BattleServerRelay::Process - 690 ms between calls!
+21:42:54.191   SessionManager::Process() - Warning - Time between calls was 689 ms, time waiting for lock was 0 ms
+21:42:54.191   BattleServerRelay::Process - 745 ms between calls!
+21:42:54.191   BattleServerRelay::Process - 745 ms between calls!
+21:43:17.724   WorldwideAutomatch2Service::OnHostComplete - we're not polling at the moment, ignoring
+21:45:32.602   NetworkManager::DispatchEvents() - Warning - Time between calls was 13451 ms
+21:45:58.340   NetworkManager::DispatchEvents() - Warning - Time between calls was 9378 ms
+00:09:28.119   NetworkManager::DispatchEvents() - Warning - Time between calls was 3218 ms
+11:56:27.379   NetworkManager::DispatchEvents() - Warning - Time between calls was 2705 ms
+11:56:41.661   NetworkManager::DispatchEvents() - Warning - Time between calls was 7670 ms
+11:57:23.506   NetworkManager::DispatchEvents() - Warning - Time between calls was 41325 ms
+12:00:24.280   WorldwideAutomatch2Service::OnHostComplete - we're not polling at the moment, ignoring
+12:03:36.078   NetworkManager::DispatchEvents() - Warning - Time between calls was 6527 ms
+20:12:36.316   SessionManager::Process() - Warning - Time between calls was 1006 ms, time waiting for lock was 995 ms
+20:12:50.511   NetworkManager::DispatchEvents() - Warning - Time between calls was 2937 ms
+20:27:59.402   NetworkManager::DispatchEvents() - Warning - Time between calls was 4036 ms
+20:28:06.926   NetworkManager::DispatchEvents() - Warning - Time between calls was 5309 ms
+20:28:09.801   NetworkManager::DispatchEvents() - Warning - Time between calls was 2876 ms
+21:08:35.231   NetworkManager::DispatchEvents() - Warning - Time between calls was 3027 ms
+21:10:48.884   SessionManager::Process() - Warning - Time between calls was 1156 ms, time waiting for lock was 0 ms
+21:13:57.900   SessionManager::Process() - Warning - Time between calls was 1348 ms, time waiting for lock was 0 ms
+21:15:12.751   SessionManager::Process() - Warning - Time between calls was 2122 ms, time waiting for lock was 0 ms
+21:15:15.156   SessionManager::Process() - Warning - Time between calls was 1215 ms, time waiting for lock was 0 ms
+01:02:51.105   SessionManager::Process() - Warning - Time between calls was 661 ms, time waiting for lock was 0 ms
+01:03:12.187   SessionManager::Process() - Warning - Time between calls was 1117 ms, time waiting for lock was 998 ms
+01:04:26.948   NetworkManager::DispatchEvents() - Warning - Time between calls was 14856 ms
+01:04:29.664   SessionManager::Process() - Warning - Time between calls was 541 ms, time waiting for lock was 504 ms
+01:05:11.309   NetworkManager::DispatchEvents() - Warning - Time between calls was 44382 ms
