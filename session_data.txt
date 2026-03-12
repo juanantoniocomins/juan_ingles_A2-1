@@ -1,0 +1,8 @@
+sessionGUID = {f681cf31-934e-4cf6-9f8d-b23d50f44a45}
+version = 13.2.4553.0
+configuration = rtm
+depot = cardinal
+stream = release_13_2_0
+launchParameters = 
+unsupportedReasons = memory
+module = Quit
