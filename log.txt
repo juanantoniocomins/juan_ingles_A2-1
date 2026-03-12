@@ -1,7 +1,7 @@
-Generating with biome subtropical_eastern
-Generating with layout dunes
+Generating with biome temperate
+Generating with layout mountain_pass
 Generating with size map_size_896
-Generating with seed 425248100 (0x1958C564)
+Generating with seed 1785986927 (0x6A73FF6F)
 Generating with player count 2
 Loading 14 terrain layout lua library files matching pattern data:scar/TerrainLayout/Library/*.lua
     Loading data:scar\TerrainLayout\Library\map_setup.lua
@@ -18,16 +18,14 @@ Loading 14 terrain layout lua library files matching pattern data:scar/TerrainLa
     Loading data:scar\TerrainLayout\Library\drawlinesfunctions.lua
     Loading data:scar\TerrainLayout\Library\getsquaresfunctions.lua
     Loading data:scar\TerrainLayout\Library\setsquaresfunctions.lua
-Finished running terrain layout scripts in 2.741930 seconds
-Finished creating terrain layout in 2.744626 seconds
-Finished impass avoidance in 0.027960 seconds
-Finished start selection and impass avoidance in 0.028051 seconds
-Finished setting GEWorld terrain in 0.006017 seconds
-Duplicate terrain texture biome_tropical_dry\dirt\dirt_grass_patch_b_subtropical_a used at index 9 and 12 with different scale/rotation/grass culling values. Warning: these textures will not be merged and will take up 2 slots towards the 8 texture-per-chunk limit.
-Duplicate terrain texture biome_tropical_dry\stone\riverbed_east_seafloor_warm_a used at index 11 and 18 with different scale/rotation/grass culling values. Warning: these textures will not be merged and will take up 2 slots towards the 8 texture-per-chunk limit.
-Duplicate terrain texture biome_tropical_dry\stone\riverbed_east_seafloor_warm_a used at index 16 and 18 with different scale/rotation/grass culling values. Warning: these textures will not be merged and will take up 2 slots towards the 8 texture-per-chunk limit.
-Finished texturing the terrain in 15.211984 seconds
-Finished applying grass in 5.049323 seconds
-Finished atmosphere loading in 0.053767 seconds
-Finished impass avoidance in 0.006299 seconds
-Finished map generation in 53.129807 seconds
+Finished running terrain layout scripts in 2.186673 seconds
+Finished creating terrain layout in 2.192599 seconds
+Finished impass avoidance in 0.033437 seconds
+Finished start selection and impass avoidance in 0.033532 seconds
+Finished setting GEWorld terrain in 0.007106 seconds
+Duplicate terrain texture biome_temperate_deciduous\dirt\dirt_grass_patch_b used at index 9 and 12 with different scale/rotation/grass culling values. Warning: these textures will not be merged and will take up 2 slots towards the 8 texture-per-chunk limit.
+Finished texturing the terrain in 12.391661 seconds
+Finished applying grass in 4.438304 seconds
+Finished atmosphere loading in 0.022571 seconds
+Finished impass avoidance in 0.029452 seconds
+Finished map generation in 112.490379 seconds
