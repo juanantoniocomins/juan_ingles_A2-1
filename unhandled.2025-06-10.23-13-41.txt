@@ -1,0 +1,17 @@
+-- Log file for all messages not properly caught --
+
+23:15:11.527   WorldwideAutomatch2Service::OnHostComplete - we're not polling at the moment, ignoring
+23:20:44.764   SessionManager::Process() - Warning - Time between calls was 1360 ms, time waiting for lock was 1327 ms
+23:20:46.286   SessionManager::Process() - Warning - Time between calls was 1410 ms, time waiting for lock was 1321 ms
+23:20:58.143   SessionManager::Process() - Warning - Time between calls was 600 ms, time waiting for lock was 525 ms
+23:21:04.216   SessionManager::Process() - Warning - Time between calls was 636 ms, time waiting for lock was 626 ms
+23:21:05.574   SessionManager::Process() - Warning - Time between calls was 612 ms, time waiting for lock was 590 ms
+23:21:07.162   SessionManager::Process() - Warning - Time between calls was 1033 ms, time waiting for lock was 1023 ms
+23:21:11.249   SessionManager::Process() - Warning - Time between calls was 545 ms, time waiting for lock was 532 ms
+23:21:12.911   SessionManager::Process() - Warning - Time between calls was 719 ms, time waiting for lock was 708 ms
+23:22:55.015   NetworkManager::DispatchEvents() - Warning - Time between calls was 10663 ms
+23:24:51.591   SessionManager::Process() - Warning - Time between calls was 682 ms, time waiting for lock was 672 ms
+23:24:54.023   SessionManager::Process() - Warning - Time between calls was 2026 ms, time waiting for lock was 2013 ms
+23:29:43.842   NetworkManager::DispatchEvents() - Warning - Time between calls was 7091 ms
+00:56:04.777   NetworkManager::DispatchEvents() - Warning - Time between calls was 2775 ms
+01:26:55.467   SessionManager::Process() - Warning - Time between calls was 2421 ms, time waiting for lock was 0 ms

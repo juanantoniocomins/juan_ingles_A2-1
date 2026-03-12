@@ -1,0 +1,46 @@
+-- Log file for all messages not properly caught --
+
+23:59:28.195   NetworkManager::DispatchEvents() - Warning - Time between calls was 4544 ms
+23:59:32.610   SessionManager::Process() - Warning - Time between calls was 598 ms, time waiting for lock was 587 ms
+23:59:40.194   SessionManager::Process() - Warning - Time between calls was 676 ms, time waiting for lock was 665 ms
+23:59:49.225   WorldwideAutomatch2Service::OnHostComplete - we're not polling at the moment, ignoring
+00:00:13.387   NetworkManager::DispatchEvents() - Warning - Time between calls was 7983 ms
+00:01:21.224   NetworkManager::DispatchEvents() - Warning - Time between calls was 2856 ms
+00:46:49.651   NetworkManager::DispatchEvents() - Warning - Time between calls was 3277 ms
+00:47:08.245   WorldwideAutomatch2Service::OnHostComplete - we're not polling at the moment, ignoring
+00:51:50.406   NetworkManager::DispatchEvents() - Warning - Time between calls was 12574 ms
+00:52:04.533   NetworkManager::DispatchEvents() - Warning - Time between calls was 4580 ms
+00:52:58.805   NetworkManager::DispatchEvents() - Warning - Time between calls was 3466 ms
+00:52:58.989   SessionManager::Process() - Warning - Time between calls was 553 ms, time waiting for lock was 540 ms
+00:53:17.502   NetworkManager::DispatchEvents() - Warning - Time between calls was 5585 ms
+00:54:08.467   NetworkManager::DispatchEvents() - Warning - Time between calls was 6138 ms
+00:54:15.744   SessionManager::Process() - Warning - Time between calls was 735 ms, time waiting for lock was 0 ms
+00:54:21.672   NetworkManager::DispatchEvents() - Warning - Time between calls was 13205 ms
+00:54:41.837   NetworkManager::DispatchEvents() - Warning - Time between calls was 20165 ms
+00:54:45.883   NetworkManager::DispatchEvents() - Warning - Time between calls was 4046 ms
+00:58:49.936   NetworkManager::DispatchEvents() - Warning - Time between calls was 2799 ms
+00:58:57.153   NetworkManager::DispatchEvents() - Warning - Time between calls was 4679 ms
+01:54:53.182   NetworkManager::DispatchEvents() - Warning - Time between calls was 5518 ms
+01:55:22.883   WorldwideAutomatch2Service::OnHostComplete - we're not polling at the moment, ignoring
+01:57:43.309   SessionManager::Process() - Warning - Time between calls was 595 ms, time waiting for lock was 0 ms
+01:58:07.667   NetworkManager::DispatchEvents() - Warning - Time between calls was 4136 ms
+01:58:07.667   SessionManager::Process() - Warning - Time between calls was 546 ms, time waiting for lock was 535 ms
+01:58:09.817   NetworkManager::DispatchEvents() - Warning - Time between calls was 2692 ms
+01:58:28.330   SessionManager::Process() - Warning - Time between calls was 1180 ms, time waiting for lock was 0 ms
+01:58:29.974   SessionManager::Process() - Warning - Time between calls was 521 ms, time waiting for lock was 0 ms
+01:58:35.498   SessionManager::Process() - Warning - Time between calls was 1134 ms, time waiting for lock was 0 ms
+01:58:41.088   SessionManager::Process() - Warning - Time between calls was 1329 ms, time waiting for lock was 1294 ms
+01:58:47.875   NetworkManager::DispatchEvents() - Warning - Time between calls was 3580 ms
+01:59:14.591   NetworkManager::DispatchEvents() - Warning - Time between calls was 2787 ms
+01:59:29.615   NetworkManager::DispatchEvents() - Warning - Time between calls was 15024 ms
+02:09:43.209   NetworkManager::DispatchEvents() - Warning - Time between calls was 8931 ms
+02:09:44.288   SessionManager::Process() - Warning - Time between calls was 675 ms, time waiting for lock was 664 ms
+02:10:06.312   NetworkManager::DispatchEvents() - Warning - Time between calls was 12237 ms
+02:10:07.321   NetworkManagerInternal::FlushJobs - flushing remaining (1) dynamic jobs:
+02:10:07.321   Dynamic job SetDataAsync still running
+02:10:07.729   NetworkManagerInternal waited 407 ms for async jobs to complete successfully
+02:10:07.729   NetworkManagerInternal::FlushJobs - flushing remaining (1) dynamic jobs:
+02:10:07.729   Dynamic job LogoutAsync still running
+02:10:08.454   NetworkManagerInternal waited 726 ms for async jobs to complete successfully
+02:10:08.502   AsyncJobDriver::~AsyncJobDriver() - dynamically allocated job HttpRequestAsync is still running
+02:10:08.910   AsyncJobDriver::~AsyncJobDriver() - dynamically allocated job ChatChannelCache is still running

@@ -1,0 +1,17 @@
+-- Log file for all messages not properly caught --
+
+00:13:13.738   SessionManager::Process() - Warning - Time between calls was 1555 ms, time waiting for lock was 1544 ms
+00:13:20.156   SessionManager::Process() - Warning - Time between calls was 3404 ms, time waiting for lock was 3393 ms
+00:13:22.548   NetworkManager::DispatchEvents() - Warning - Time between calls was 5795 ms
+00:13:37.465   NetworkManager::DispatchEvents() - Warning - Time between calls was 2503 ms
+00:13:53.309   WorldwideAutomatch2Service::OnHostComplete - we're not polling at the moment, ignoring
+00:14:08.860   WorldwideAutomatch2Service::OnHostComplete - we're not polling at the moment, ignoring
+00:14:20.935   WorldwideAutomatch2Service::OnHostComplete - we're not polling at the moment, ignoring
+00:14:37.127   WorldwideAutomatch2Service::OnHostComplete - we're not polling at the moment, ignoring
+00:14:56.763   NetworkManager::DispatchEvents() - Warning - Time between calls was 3899 ms
+00:14:57.420   NetworkManagerInternal::FlushJobs - flushing remaining (1) dynamic jobs:
+00:14:57.420   Dynamic job SetDataAsync still running
+00:14:58.020   NetworkManagerInternal waited 600 ms for async jobs to complete successfully
+00:14:58.020   NetworkManagerInternal::FlushJobs - flushing remaining (1) dynamic jobs:
+00:14:58.020   Dynamic job LogoutAsync still running
+00:14:58.786   NetworkManagerInternal waited 766 ms for async jobs to complete successfully

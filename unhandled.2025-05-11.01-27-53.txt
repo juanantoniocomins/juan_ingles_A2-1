@@ -1,0 +1,7 @@
+-- Log file for all messages not properly caught --
+
+01:29:02.713   SessionManager::Process() - Warning - Time between calls was 532 ms, time waiting for lock was 521 ms
+01:29:54.792   NetworkManagerInternal waited 0 ms for async jobs to complete successfully
+01:29:54.793   NetworkManagerInternal::FlushJobs - flushing remaining (1) dynamic jobs:
+01:29:54.793   Dynamic job LogoutAsync still running
+01:29:55.449   NetworkManagerInternal waited 657 ms for async jobs to complete successfully
