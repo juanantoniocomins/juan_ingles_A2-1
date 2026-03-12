@@ -1,0 +1,31 @@
+Generating with biome temperate
+Generating with layout ponds
+Generating with size map_size_896
+Generating with seed 1259929766 (0x4B1900A6)
+Generating with player count 2
+Loading 14 terrain layout lua library files matching pattern data:scar/TerrainLayout/Library/*.lua
+    Loading data:scar\TerrainLayout\Library\map_setup.lua
+    Loading data:scar\TerrainLayout\Library\player_starts.lua
+    Loading data:scar\TerrainLayout\Library\playerresources.lua
+    Loading data:scar\TerrainLayout\Library\review_functions.lua
+    Loading data:scar\TerrainLayout\Library\tacticalregions.lua
+    Loading data:scar\TerrainLayout\Library\template_functions.lua
+    Loading data:scar\TerrainLayout\Library\xp1_functions.lua
+    Loading data:scar\TerrainLayout\Library\xp2_functions.lua
+    Loading data:scar\TerrainLayout\Library\xp3_functions.lua
+    Loading data:scar\TerrainLayout\Library\calculationfunctions.lua
+    Loading data:scar\TerrainLayout\Library\distributionfunctions.lua
+    Loading data:scar\TerrainLayout\Library\drawlinesfunctions.lua
+    Loading data:scar\TerrainLayout\Library\getsquaresfunctions.lua
+    Loading data:scar\TerrainLayout\Library\setsquaresfunctions.lua
+Finished running terrain layout scripts in 4.545824 seconds
+Finished creating terrain layout in 4.547865 seconds
+Finished impass avoidance in 0.048553 seconds
+Finished start selection and impass avoidance in 0.048770 seconds
+Finished setting GEWorld terrain in 0.006445 seconds
+Duplicate terrain texture biome_temperate_deciduous\dirt\dirt_grass_patch_b used at index 9 and 12 with different scale/rotation/grass culling values. Warning: these textures will not be merged and will take up 2 slots towards the 8 texture-per-chunk limit.
+Finished texturing the terrain in 24.478067 seconds
+Finished applying grass in 7.315299 seconds
+Finished atmosphere loading in 0.067572 seconds
+Finished impass avoidance in 0.004431 seconds
+Finished map generation in 89.005379 seconds
